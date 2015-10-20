@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Cut Throat</string>
+
+    <string name="hello_world">Goodbye world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="player_select">Select a Player</string>
+    <string-array name="players_array">
+        <item>Tyler</item>
+        <item>Nick</item>
+        <item>Tim</item>
+        <item>Jimmy</item>
+        <item>Devon</item>
+        <item>Sully</item>
+        <item>Otto</item>
+        <item>Boris</item>
+        <item>Guest 1</item>
+        <item>Guest 2</item>
+        <item>Guest 3</item>
+    </string-array>
+</resources>
