@@ -48,24 +48,27 @@
                 android:layout_weight="50"
                 android:layout_height="100dp">
 
-                <Button
+                <Button android:id="@+id/b1"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/one"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:onClick="toggle"/>
 
-                <Button
+                <Button android:id="@+id/b2"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/two"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerInParent="true"
+                    android:onClick="toggle"/>
 
-                <Button
+                <Button android:id="@+id/b3"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/three"
                     android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:onClick="toggle"/>
             </RelativeLayout>
         </LinearLayout>
 
@@ -87,23 +90,26 @@
                 android:layout_weight="50"
                 android:layout_height="100dp">
 
-                <Button
+                <Button android:id="@+id/b4"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/four"
+                    android:onClick="toggle"
                     android:layout_centerVertical="true"/>
 
-                <Button
+                <Button android:id="@+id/b5"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/five"
+                    android:onClick="toggle"
                     android:layout_centerInParent="true"/>
 
-                <Button
+                <Button android:id="@+id/b6"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/six"
                     android:layout_alignParentRight="true"
+                    android:onClick="toggle"
                     android:layout_centerVertical="true"/>
             </RelativeLayout>
         </LinearLayout>
@@ -126,22 +132,25 @@
                 android:layout_weight="50"
                 android:layout_height="100dp">
 
-                <Button
+                <Button android:id="@+id/b7"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/seven"
+                    android:onClick="toggle"
                     android:layout_centerVertical="true"/>
 
-                <Button
+                <Button android:id="@+id/b8"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/eight"
+                    android:onClick="toggle"
                     android:layout_centerInParent="true"/>
 
-                <Button
+                <Button android:id="@+id/b9"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/nine"
+                    android:onClick="toggle"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"/>
             </RelativeLayout>
@@ -165,23 +174,26 @@
                 android:layout_weight="50"
                 android:layout_height="100dp">
 
-                <Button
+                <Button android:id="@+id/b10"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/ten"
+                    android:onClick="toggle"
                     android:layout_centerVertical="true"/>
 
-                <Button
+                <Button android:id="@+id/b11"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/eleven"
+                    android:onClick="toggle"
                     android:layout_centerInParent="true"/>
 
-                <Button
+                <Button android:id="@+id/b12"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/twelve"
                     android:layout_alignParentRight="true"
+                    android:onClick="toggle"
                     android:layout_centerVertical="true"/>
             </RelativeLayout>
         </LinearLayout>
@@ -204,23 +216,26 @@
                 android:layout_weight="50"
                 android:layout_height="100dp">
 
-                <Button
+                <Button android:id="@+id/b13"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/thirteen"
+                    android:onClick="toggle"
                     android:layout_centerVertical="true"/>
 
-                <Button
+                <Button android:id="@+id/b14"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/fourteen"
+                    android:onClick="toggle"
                     android:layout_centerInParent="true"/>
 
-                <Button
+                <Button android:id="@+id/b15"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/fifteen"
                     android:layout_alignParentRight="true"
+                    android:onClick="toggle"
                     android:layout_centerVertical="true"/>
             </RelativeLayout>
         </LinearLayout>
@@ -245,37 +260,42 @@
                 android:entries="@array/players_array"
                 android:prompt="@string/player_select" />
 
-            <Button
+            <Button android:id="@+id/b3-1"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/one"
+                android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button
+            <Button android:id="@+id/b3-2"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/two"
+                android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button
+            <Button android:id="@+id/b3-3"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/three"
+                android:onClick="toggle"
                 android:layout_centerVertical="true"
                 android:padding="10dp"/>
 
-            <Button
+            <Button android:id="@+id/b3-4"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/four"
                 android:layout_centerVertical="true"
+                android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button
+            <Button android:id="@+id/b3-5"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/five"
                 android:layout_centerVertical="true"
+                android:onClick="toggle"
                 android:padding="10dp"/>
 
         </LinearLayout>
@@ -292,37 +312,42 @@
                 android:entries="@array/players_array"
                 android:prompt="@string/player_select" />
 
-            <Button
+            <Button android:id="@+id/b3-6"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/six"
+                android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button
+            <Button android:id="@+id/b3-7"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/seven"
+                android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button
+            <Button android:id="@+id/b3-8"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/eight"
                 android:layout_centerVertical="true"
+                android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button
+            <Button android:id="@+id/b3-9"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/nine"
                 android:layout_centerVertical="true"
+                android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button
+            <Button android:id="@+id/b3-10"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/ten"
                 android:layout_centerVertical="true"
+                android:onClick="toggle"
                 android:padding="10dp"/>
 
         </LinearLayout>
@@ -339,37 +364,42 @@
                 android:entries="@array/players_array"
                 android:prompt="@string/player_select" />
 
-            <Button
+            <Button android:id="@+id/b3-11"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/eleven"
+                android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button
+            <Button android:id="@+id/b3-12"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/twelve"
+                android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button
+            <Button android:id="@+id/b3-13"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/thirteen"
                 android:layout_centerVertical="true"
+                android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button
+            <Button android:id="@+id/b3-14"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/fourteen"
                 android:layout_centerVertical="true"
+                android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button
+            <Button android:id="@+id/b3-15"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/fifteen"
                 android:layout_centerVertical="true"
+                android:onClick="toggle"
                 android:padding="10dp"/>
 
         </LinearLayout>

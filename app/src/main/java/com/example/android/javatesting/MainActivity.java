@@ -49,7 +49,7 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+/* ----------------------------- 3 & 5 Player View switching ----------------------------------*/
     Button button;
     View FivePlayers;
     View ThreePlayers;
@@ -67,12 +67,12 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View arg0) {
                 if (FivePlayers.getVisibility() == View.VISIBLE) {
-                //    Log.d(TAG, "FivePlayers is visible");
+                    //    Log.d(TAG, "FivePlayers is visible");
                     FivePlayers.setVisibility(View.INVISIBLE);
                     ThreePlayers.setVisibility(View.VISIBLE);
                     SwitchText.setText("3 Player");
-                } else{
-                //    Log.d(TAG, "FivePlayers is Invisible");
+                } else {
+                    //    Log.d(TAG, "FivePlayers is Invisible");
                     ThreePlayers.setVisibility(View.GONE);
                     FivePlayers.setVisibility(View.VISIBLE);
                     SwitchText.setText("5 Player");
@@ -80,4 +80,32 @@ public class MainActivity extends ActionBarActivity {
             }
         });
     }
+    public void toggle (View ball){
+        String BallID;
+        BallID = ball.getResources().getResourceName(ball.getId()).split("/")[1];
+        Log.d(TAG, "Ball ID is:  " + BallID);
+        switch (BallID) {
+            case "b1":
+                if (ball.isActivated()){
+                    //Log.d(TAG, "Toggle method called in activated");
+                    ball.setBackgroundResource(R.drawable.one);
+                    ball.setActivated(false);
+                }
+                else{
+                    //Log.d(TAG, "Toggle method called in NON activated");
+                    ball.setBackgroundResource(R.drawable.one_out);
+                    ball.setActivated(true);
+                }
+            case "b2":
+                if (ball.isActivated()){
+                    ball.setBackgroundResource(R.drawable.two);
+                    ball.setActivated(false);
+                }
+                else{
+                    ball.setBackgroundResource(R.drawable.two_out);
+                    ball.setActivated(true);
+                }
+        }
+    }
+
 }
