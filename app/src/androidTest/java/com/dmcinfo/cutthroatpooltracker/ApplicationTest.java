@@ -1,4 +1,4 @@
-package com.example.android.javatesting;
+package com.dmcinfo.cutthroatpooltracker;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -6,6 +6,7 @@
 
     <string name="player_select">Select a Player</string>
     <string-array name="players_array">
+        <item>Select a player</item>
         <item>Tyler</item>
         <item>Nick</item>
         <item>Tim</item>

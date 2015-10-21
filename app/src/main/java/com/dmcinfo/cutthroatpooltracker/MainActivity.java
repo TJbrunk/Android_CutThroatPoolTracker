@@ -1,4 +1,4 @@
-package com.example.android.javatesting;
+package com.dmcinfo.cutthroatpooltracker;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -83,7 +83,7 @@ public class MainActivity extends ActionBarActivity {
     public void toggle (View ball){
         String BallID;
         BallID = ball.getResources().getResourceName(ball.getId()).split("/")[1];
-        Log.d(TAG, "Ball ID is:  " + BallID);
+      //  Log.d(TAG, "Ball ID is:  " + BallID);
         switch (BallID) {
             case "b1":
             case "b3_1":
@@ -96,8 +96,7 @@ public class MainActivity extends ActionBarActivity {
                     //Log.d(TAG, "Toggle method called in NON activated");
                     ball.setBackgroundResource(R.drawable.one_out);
                     ball.setActivated(true);
-                }
-                break;
+                }break;
             case "b2":
             case "b3_2":
                 if (ball.isActivated()){
