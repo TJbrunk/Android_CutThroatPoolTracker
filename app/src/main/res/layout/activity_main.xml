@@ -260,21 +260,21 @@
                 android:entries="@array/players_array"
                 android:prompt="@string/player_select" />
 
-            <Button android:id="@+id/b3-1"
+            <Button android:id="@+id/b3_1"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/one"
                 android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button android:id="@+id/b3-2"
+            <Button android:id="@+id/b3_2"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/two"
                 android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button android:id="@+id/b3-3"
+            <Button android:id="@+id/b3_3"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/three"
@@ -282,7 +282,7 @@
                 android:layout_centerVertical="true"
                 android:padding="10dp"/>
 
-            <Button android:id="@+id/b3-4"
+            <Button android:id="@+id/b3_4"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/four"
@@ -290,7 +290,7 @@
                 android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button android:id="@+id/b3-5"
+            <Button android:id="@+id/b3_5"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/five"
@@ -312,21 +312,21 @@
                 android:entries="@array/players_array"
                 android:prompt="@string/player_select" />
 
-            <Button android:id="@+id/b3-6"
+            <Button android:id="@+id/b3_6"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/six"
                 android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button android:id="@+id/b3-7"
+            <Button android:id="@+id/b3_7"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/seven"
                 android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button android:id="@+id/b3-8"
+            <Button android:id="@+id/b3_8"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/eight"
@@ -334,7 +334,7 @@
                 android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button android:id="@+id/b3-9"
+            <Button android:id="@+id/b3_9"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/nine"
@@ -342,7 +342,7 @@
                 android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button android:id="@+id/b3-10"
+            <Button android:id="@+id/b3_10"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/ten"
@@ -364,21 +364,21 @@
                 android:entries="@array/players_array"
                 android:prompt="@string/player_select" />
 
-            <Button android:id="@+id/b3-11"
+            <Button android:id="@+id/b3_11"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/eleven"
                 android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button android:id="@+id/b3-12"
+            <Button android:id="@+id/b3_12"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/twelve"
                 android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button android:id="@+id/b3-13"
+            <Button android:id="@+id/b3_13"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/thirteen"
@@ -386,7 +386,7 @@
                 android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button android:id="@+id/b3-14"
+            <Button android:id="@+id/b3_14"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/fourteen"
@@ -394,7 +394,7 @@
                 android:onClick="toggle"
                 android:padding="10dp"/>
 
-            <Button android:id="@+id/b3-15"
+            <Button android:id="@+id/b3_15"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/fifteen"
