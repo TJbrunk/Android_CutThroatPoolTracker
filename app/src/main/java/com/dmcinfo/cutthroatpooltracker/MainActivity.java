@@ -1,7 +1,9 @@
 package com.dmcinfo.cutthroatpooltracker;
 
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.os.Debug;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -16,17 +18,139 @@ import android.widget.Spinner;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
+//drag and drop imports:
+import android.view.DragEvent;
+import android.view.MotionEvent;
+import android.view.View.DragShadowBuilder;
+import android.view.View.OnDragListener;
+import android.view.View.OnTouchListener;
 
-public class MainActivity extends ActionBarActivity {
 
+    public class MainActivity extends ActionBarActivity {
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+        private TextView player1, player2, player3, player4, player5;
+        private TextView group1, group2, group3, group4, group5;
+        public CharSequence dragData;
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+            //  addListenerOnButton();
+
+            //views to drag
+            player1 = (TextView)findViewById(R.id.player1);
+            player2 = (TextView)findViewById(R.id.player2);
+            //player3 = (TextView)findViewById(R.id.player3);
+
+            //views to drop onto
+            group1 = (TextView)findViewById(R.id.g1);
+       //     group2 = (TextView)findViewById(R.id.g2);
+        //    group3 = (TextView)findViewById(R.id.g3);
+
+            //set touch listeners
+            player1.setOnTouchListener(new ChoiceTouchListener());
+         //   player2.setOnLongClickListener(new ChoiceTouchListener());
+            player2.setOnTouchListener(new ChoiceTouchListener());
+       //     option3.setOnTouchListener(new ChoiceTouchListener());
+
+            //set drag listeners
+            group1.setOnDragListener(new ChoiceDragListener());
+         //   group2.setOnDragListener(new ChoiceDragListener());
+        //    choice3.setOnDragListener(new ChoiceDragListener());
+        }
+
+        /**
+         * ChoiceTouchListener will handle touch events on draggable views
+         */
+        private final class ChoiceTouchListener implements OnTouchListener {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+            /*
+             * Drag details: we only need default behavior
+             * - clip data could be set to pass data as part of drag
+             * - shadow can be tailored
+             */
+                    ClipData name = ClipData.newPlainText("","");
+                 //   ClipData name = ClipData.newPlainText("PlayerName", "PLAYER_PLAYER");
+
+                    DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+                    //start dragging the item touched
+                    view.startDrag(name, shadowBuilder, view, 0);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        /**
+         * DragListener will handle dragged views being dropped on the drop area
+         * - only the drop action will have processing added to it as we are not
+         * - amending the default behavior for other parts of the drag process
+         */
+        private class ChoiceDragListener implements OnDragListener {
+
+            @Override
+            public boolean onDrag(View v, DragEvent event) {
+                switch (event.getAction()) {
+                    case DragEvent.ACTION_DRAG_STARTED:
+                        //no action necessary
+                        break;
+                    case DragEvent.ACTION_DRAG_ENTERED:
+                        //no action necessary
+                        break;
+                    case DragEvent.ACTION_DRAG_EXITED:
+                        //no action necessary
+                        break;
+                    case DragEvent.ACTION_DROP:
+
+                        //handle the dragged view being dropped over a drop view
+                        View view = (View) event.getLocalState();
+                        //view dragged item is being dropped on
+                        TextView dropTarget = (TextView) v;
+                        //view being dragged and dropped
+                        TextView dropped = (TextView) view;
+                        //stop displaying the view where it was before it was dragged
+                        //        view.setVisibility(View.INVISIBLE);
+                        //update the text in the target view to reflect the data being dropped
+                        dropTarget.setText(dropTarget.getText().toString() + dropped.getText().toString());
+                        //make it bold to highlight the fact that an item has been dropped
+                        dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
+                        //if an item has already been dropped here, there will be a tag
+                        Object tag = dropTarget.getTag();
+                     /*   //if there is already an item here, set it back visible in its original place
+                        if(tag!=null)
+                        {
+                            //the tag is the view id already dropped here
+                            int existingID = (Integer)tag;
+                            //set the original view visible again
+                            findViewById(existingID).setVisibility(View.VISIBLE);
+                        }*/
+                        //set the tag in the target view being dropped on - to the ID of the view being dropped
+                        dropTarget.setTag(dropped.getId());
+                        //remove setOnDragListener by setting OnDragListener to null, so that no further drag & dropping on this TextView can be done
+                        dropTarget.setOnDragListener(null);
+
+                    case DragEvent.ACTION_DRAG_ENDED:
+                        //no action necessary
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        }
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    @Override
+/*    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        addListenerOnButton();
-    }
+      //  addListenerOnButton();
+    }*.
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,13 +174,13 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 /* ----------------------------- 3 & 5 Player View switching ----------------------------------*/
-    Button button;
+ /*   Button button;
     View FivePlayers;
     View ThreePlayers;
     TextView SwitchText;
 
     public void addListenerOnButton() {
-    /* Toggle between 3 player and 5 player views */
+    // Toggle between 3 player and 5 player views
         button = (Button) findViewById(R.id.num_player_switch);
         FivePlayers = findViewById(R.id.five_player);
         ThreePlayers = findViewById(R.id.three_player);
@@ -79,7 +203,10 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
         });
-    }
+    }*/
+
+
+    //     ***************************               Toggle Ball images      *************************
     public void toggle (View ball){
         String BallID;
         BallID = ball.getResources().getResourceName(ball.getId()).split("/")[1];
