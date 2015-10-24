@@ -5,14 +5,18 @@ import android.content.ClipData;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Debug;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.internal.widget.AdapterViewCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SpinnerAdapter;
 import android.widget.Spinner;
 import android.widget.SimpleExpandableListAdapter;
@@ -24,11 +28,12 @@ import android.view.MotionEvent;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
+import android.widget.Toast;
 
 
-    public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity {
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-        private TextView player1, player2, player3, player4, player5;
+        private EditText player1, player2;//, player3, player4, player5;
         private TextView group1, group2, group3, group4, group5;
         public CharSequence dragData;
 
@@ -39,8 +44,8 @@ import android.view.View.OnTouchListener;
             //  addListenerOnButton();
 
             //views to drag
-            player1 = (TextView)findViewById(R.id.player1);
-            player2 = (TextView)findViewById(R.id.player2);
+            player1 = (EditText) findViewById(R.id.player1);
+            player2 = (EditText) findViewById(R.id.player2);
             //player3 = (TextView)findViewById(R.id.player3);
 
             //views to drop onto
@@ -49,10 +54,10 @@ import android.view.View.OnTouchListener;
         //    group3 = (TextView)findViewById(R.id.g3);
 
             //set touch listeners
-            player1.setOnTouchListener(new ChoiceTouchListener());
-         //   player2.setOnLongClickListener(new ChoiceTouchListener());
-            player2.setOnTouchListener(new ChoiceTouchListener());
-       //     option3.setOnTouchListener(new ChoiceTouchListener());
+            player1.setOnLongClickListener (new LongClickListener());
+            player2.setOnLongClickListener(new LongClickListener());
+        //    player2.setOnLongClickListener(new LongClickListener());
+       //     option3.setOnLongClickListener(new LongClickListener());
 
             //set drag listeners
             group1.setOnDragListener(new ChoiceDragListener());
@@ -61,29 +66,28 @@ import android.view.View.OnTouchListener;
         }
 
         /**
-         * ChoiceTouchListener will handle touch events on draggable views
+         * LongClickListener will handle touch events on draggable views
          */
-        private final class ChoiceTouchListener implements OnTouchListener {
+        private final class LongClickListener implements View.OnLongClickListener {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-            /*
-             * Drag details: we only need default behavior
-             * - clip data could be set to pass data as part of drag
-             * - shadow can be tailored
-             */
+            public boolean onLongClick(View v) {
+                Toast.makeText(getApplicationContext(), "LONG CLICK", Toast.LENGTH_SHORT).show();
+                /*
+                 * Drag details: we only need default behavior
+                 * - clip data could be set to pass data as part of drag
+                 * - shadow can be tailored
+                 */
+
                     ClipData name = ClipData.newPlainText("","");
                  //   ClipData name = ClipData.newPlainText("PlayerName", "PLAYER_PLAYER");
 
-                    DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+                    DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
                     //start dragging the item touched
-                    view.startDrag(name, shadowBuilder, view, 0);
+                    v.startDrag(name, shadowBuilder, v, 0);
                     return true;
-                } else {
-                    return false;
-                }
             }
         }
+
 
         /**
          * DragListener will handle dragged views being dropped on the drop area
@@ -112,26 +116,12 @@ import android.view.View.OnTouchListener;
                         TextView dropTarget = (TextView) v;
                         //view being dragged and dropped
                         TextView dropped = (TextView) view;
-                        //stop displaying the view where it was before it was dragged
-                        //        view.setVisibility(View.INVISIBLE);
                         //update the text in the target view to reflect the data being dropped
-                        dropTarget.setText(dropTarget.getText().toString() + dropped.getText().toString());
+                        dropTarget.setText(dropped.getText().toString());
                         //make it bold to highlight the fact that an item has been dropped
                         dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
-                        //if an item has already been dropped here, there will be a tag
-                        Object tag = dropTarget.getTag();
-                     /*   //if there is already an item here, set it back visible in its original place
-                        if(tag!=null)
-                        {
-                            //the tag is the view id already dropped here
-                            int existingID = (Integer)tag;
-                            //set the original view visible again
-                            findViewById(existingID).setVisibility(View.VISIBLE);
-                        }*/
                         //set the tag in the target view being dropped on - to the ID of the view being dropped
                         dropTarget.setTag(dropped.getId());
-                        //remove setOnDragListener by setting OnDragListener to null, so that no further drag & dropping on this TextView can be done
-                        dropTarget.setOnDragListener(null);
 
                     case DragEvent.ACTION_DRAG_ENDED:
                         //no action necessary
@@ -144,37 +134,8 @@ import android.view.View.OnTouchListener;
         }
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     private static final String TAG = MainActivity.class.getSimpleName();
-
-/*    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-      //  addListenerOnButton();
-    }*.
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 /* ----------------------------- 3 & 5 Player View switching ----------------------------------*/
- /*   Button button;
+    Button button;
     View FivePlayers;
     View ThreePlayers;
     TextView SwitchText;
@@ -203,7 +164,7 @@ import android.view.View.OnTouchListener;
                 }
             }
         });
-    }*/
+    }
 
 
     //     ***************************               Toggle Ball images      *************************
