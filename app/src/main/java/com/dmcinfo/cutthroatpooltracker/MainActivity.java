@@ -2,33 +2,17 @@ package com.dmcinfo.cutthroatpooltracker;
 
 import android.app.Activity;
 import android.content.ClipData;
-import android.content.DialogInterface;
 import android.graphics.Typeface;
-import android.os.Debug;
-import android.os.Handler;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.internal.widget.AdapterViewCompat;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SpinnerAdapter;
-import android.widget.Spinner;
-import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
 //drag and drop imports:
 import android.view.DragEvent;
-import android.view.MotionEvent;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
-import android.view.View.OnTouchListener;
 import android.widget.Toast;
 
 
