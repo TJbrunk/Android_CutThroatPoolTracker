@@ -33,7 +33,7 @@ import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-        private EditText player1, player2;//, player3, player4, player5;
+        private EditText player1, player2, player3, player4, player5;
         private TextView group1, group2, group3, group4, group5;
         public CharSequence dragData;
 
@@ -45,24 +45,32 @@ public class MainActivity extends ActionBarActivity {
 
             //views to drag
             player1 = (EditText) findViewById(R.id.player1);
-            player2 = (EditText) findViewById(R.id.player2);
-            //player3 = (TextView)findViewById(R.id.player3);
+            /*player2 = (EditText) findViewById(R.id.player2);
+            player3 = (EditText) findViewById(R.id.player3);
+            player4 = (EditText) findViewById(R.id.player4);
+            player5 = (EditText) findViewById(R.id.player5);*/
 
             //views to drop onto
             group1 = (TextView)findViewById(R.id.g1);
-       //     group2 = (TextView)findViewById(R.id.g2);
-        //    group3 = (TextView)findViewById(R.id.g3);
+            /*group2 = (TextView)findViewById(R.id.g2);
+            group3 = (TextView)findViewById(R.id.g3);
+            group4 = (TextView)findViewById(R.id.g4);
+            group5 = (TextView)findViewById(R.id.g5);*/
 
             //set touch listeners
             player1.setOnLongClickListener (new LongClickListener());
-            player2.setOnLongClickListener(new LongClickListener());
-        //    player2.setOnLongClickListener(new LongClickListener());
-       //     option3.setOnLongClickListener(new LongClickListener());
+           /* player2.setOnLongClickListener(new LongClickListener());
+            player3.setOnLongClickListener (new LongClickListener());
+            player4.setOnLongClickListener(new LongClickListener());
+            player5.setOnLongClickListener(new LongClickListener());*/
 
             //set drag listeners
             group1.setOnDragListener(new ChoiceDragListener());
-         //   group2.setOnDragListener(new ChoiceDragListener());
-        //    choice3.setOnDragListener(new ChoiceDragListener());
+            /*group2.setOnDragListener(new ChoiceDragListener());
+            group3.setOnDragListener(new ChoiceDragListener());
+            group4.setOnDragListener(new ChoiceDragListener());
+            group5.setOnDragListener(new ChoiceDragListener());*/
+
         }
 
         /**
@@ -140,6 +148,7 @@ public class MainActivity extends ActionBarActivity {
     View ThreePlayers;
     TextView SwitchText;
 
+/*
     public void addListenerOnButton() {
     // Toggle between 3 player and 5 player views
         button = (Button) findViewById(R.id.num_player_switch);
@@ -165,6 +174,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
     }
+*/
 
 
     //     ***************************               Toggle Ball images      *************************
