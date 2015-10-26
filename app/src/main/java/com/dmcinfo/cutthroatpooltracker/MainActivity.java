@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Debug;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.internal.widget.AdapterViewCompat;
@@ -31,7 +32,7 @@ import android.view.View.OnTouchListener;
 import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
         private EditText player1, player2, player3, player4, player5;
         private TextView group1, group2, group3, group4, group5;
@@ -41,35 +42,36 @@ public class MainActivity extends ActionBarActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+
             //  addListenerOnButton();
 
             //views to drag
             player1 = (EditText) findViewById(R.id.player1);
-            /*player2 = (EditText) findViewById(R.id.player2);
+            player2 = (EditText) findViewById(R.id.player2);
             player3 = (EditText) findViewById(R.id.player3);
             player4 = (EditText) findViewById(R.id.player4);
-            player5 = (EditText) findViewById(R.id.player5);*/
+            player5 = (EditText) findViewById(R.id.player5);
 
             //views to drop onto
             group1 = (TextView)findViewById(R.id.g1);
-            /*group2 = (TextView)findViewById(R.id.g2);
+            group2 = (TextView)findViewById(R.id.g2);
             group3 = (TextView)findViewById(R.id.g3);
             group4 = (TextView)findViewById(R.id.g4);
-            group5 = (TextView)findViewById(R.id.g5);*/
+            group5 = (TextView)findViewById(R.id.g5);
 
             //set touch listeners
             player1.setOnLongClickListener (new LongClickListener());
-           /* player2.setOnLongClickListener(new LongClickListener());
+            player2.setOnLongClickListener(new LongClickListener());
             player3.setOnLongClickListener (new LongClickListener());
             player4.setOnLongClickListener(new LongClickListener());
-            player5.setOnLongClickListener(new LongClickListener());*/
+            player5.setOnLongClickListener(new LongClickListener());
 
             //set drag listeners
             group1.setOnDragListener(new ChoiceDragListener());
-            /*group2.setOnDragListener(new ChoiceDragListener());
+            group2.setOnDragListener(new ChoiceDragListener());
             group3.setOnDragListener(new ChoiceDragListener());
             group4.setOnDragListener(new ChoiceDragListener());
-            group5.setOnDragListener(new ChoiceDragListener());*/
+            group5.setOnDragListener(new ChoiceDragListener());
 
         }
 
@@ -148,12 +150,12 @@ public class MainActivity extends ActionBarActivity {
     View ThreePlayers;
     TextView SwitchText;
 
-/*
+
     public void addListenerOnButton() {
     // Toggle between 3 player and 5 player views
         button = (Button) findViewById(R.id.num_player_switch);
         FivePlayers = findViewById(R.id.five_player);
-        ThreePlayers = findViewById(R.id.three_player);
+     //   ThreePlayers = findViewById(R.id.three_player);
         SwitchText = (TextView)findViewById(R.id.player_switch_text);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -174,11 +176,11 @@ public class MainActivity extends ActionBarActivity {
             }
         });
     }
-*/
+
 
 
     //     ***************************               Toggle Ball images      *************************
-    public void toggle (View ball){
+   public void toggle (View ball){
         String BallID;
         BallID = ball.getResources().getResourceName(ball.getId()).split("/")[1];
       //  Log.d(TAG, "Ball ID is:  " + BallID);
@@ -337,5 +339,4 @@ public class MainActivity extends ActionBarActivity {
                 }break;
         }
     }
-
 }
