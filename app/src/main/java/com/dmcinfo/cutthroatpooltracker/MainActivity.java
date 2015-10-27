@@ -2,8 +2,10 @@ package com.dmcinfo.cutthroatpooltracker;
 
 import android.app.Activity;
 import android.content.ClipData;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,14 +29,12 @@ public class MainActivity extends Activity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
 
-            //  addListenerOnButton();
-
             //views to drag
             player1 = (EditText) findViewById(R.id.player1);
-            player2 = (EditText) findViewById(R.id.player2);
+            /*player2 = (EditText) findViewById(R.id.player2);
             player3 = (EditText) findViewById(R.id.player3);
             player4 = (EditText) findViewById(R.id.player4);
-            player5 = (EditText) findViewById(R.id.player5);
+            player5 = (EditText) findViewById(R.id.player5);*/
 
             //views to drop onto
             group1 = (TextView)findViewById(R.id.g1);
@@ -43,12 +43,12 @@ public class MainActivity extends Activity {
             group4 = (TextView)findViewById(R.id.g4);
             group5 = (TextView)findViewById(R.id.g5);
 
-            //set touch listeners
+            //set long click listeners
             player1.setOnLongClickListener (new LongClickListener());
-            player2.setOnLongClickListener(new LongClickListener());
+           /* player2.setOnLongClickListener(new LongClickListener());
             player3.setOnLongClickListener (new LongClickListener());
             player4.setOnLongClickListener(new LongClickListener());
-            player5.setOnLongClickListener(new LongClickListener());
+            player5.setOnLongClickListener(new LongClickListener());*/
 
             //set drag listeners
             group1.setOnDragListener(new ChoiceDragListener());
@@ -56,7 +56,6 @@ public class MainActivity extends Activity {
             group3.setOnDragListener(new ChoiceDragListener());
             group4.setOnDragListener(new ChoiceDragListener());
             group5.setOnDragListener(new ChoiceDragListener());
-
         }
 
         /**
@@ -73,7 +72,6 @@ public class MainActivity extends Activity {
                  */
 
                     ClipData name = ClipData.newPlainText("","");
-                 //   ClipData name = ClipData.newPlainText("PlayerName", "PLAYER_PLAYER");
 
                     DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
                     //start dragging the item touched
@@ -126,7 +124,7 @@ public class MainActivity extends Activity {
                 return true;
             }
         }
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
     private static final String TAG = MainActivity.class.getSimpleName();
 /* ----------------------------- 3 & 5 Player View switching ----------------------------------*/
     Button button;
@@ -160,8 +158,6 @@ public class MainActivity extends Activity {
             }
         });
     }
-
-
 
     //     ***************************               Toggle Ball images      *************************
    public void toggle (View ball){
@@ -323,4 +319,10 @@ public class MainActivity extends Activity {
                 }break;
         }
     }
-}
+
+   public void reset_pool (View v){
+       //Toast.makeText(getApplicationContext(), "RESETTING", Toast.LENGTH_SHORT).show();
+       recreate();
+   }
+};
+

@@ -55,6 +55,7 @@
                 android:layout_centerVertical="true"
                 android:onClick="toggle"/>
         </RelativeLayout>
+
         <!-- ````````````````` group 2 `````````````````````````````````` -->
         <RelativeLayout android:id="@+id/p2_5"
             android:layout_width="wrap_content"
@@ -98,7 +99,6 @@
                 android:layout_centerVertical="true"
                 android:onClick="toggle"/>
         </RelativeLayout>
-
 
         <!-- ````````````````` group 3 `````````````````````````````````` -->
         <RelativeLayout android:id="@+id/p3_5"
@@ -231,6 +231,7 @@
                 android:layout_centerVertical="true"
                 android:onClick="toggle"/>
         </RelativeLayout>
+
     <!-- ***************************** Player Ordering  ************************************-->
         <LinearLayout
         android:layout_width="match_parent"
@@ -245,7 +246,7 @@
             android:layout_margin="25dp"
             android:hint="Player1"/>
 
-        <EditText android:id="@+id/player2"
+        <!--<EditText android:id="@+id/player2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="50dp"
@@ -272,16 +273,31 @@
             android:textSize="50dp"
             android:layout_margin="25dp"
             android:hint="Player5"/>
-        <!--      Three or Five player switch         -->
-        <TextView android:id="@+id/player_switch_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Five Player"/>
+-->
 
-        <Switch android:id="@+id/num_player_switch"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:showText="false"/>
+            android:layout_height="wrap_content">
+
+            <Button android:id="@+id/reset_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset"
+                android:onClick="reset_pool"/>
+
+            <!--      Three or Five player switch         -->
+            <TextView android:id="@+id/player_switch_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/reset_button"
+                android:text="Five Player"/>
+
+            <Switch android:id="@+id/num_player_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/num_player_switch"
+                android:showText="false"/>
+        </RelativeLayout>
 
     </LinearLayout>
     </RelativeLayout>
