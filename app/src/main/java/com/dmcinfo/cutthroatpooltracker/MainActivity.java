@@ -31,10 +31,10 @@ public class MainActivity extends Activity {
 
             //views to drag
             player1 = (EditText) findViewById(R.id.player1);
-            /*player2 = (EditText) findViewById(R.id.player2);
+            player2 = (EditText) findViewById(R.id.player2);
             player3 = (EditText) findViewById(R.id.player3);
             player4 = (EditText) findViewById(R.id.player4);
-            player5 = (EditText) findViewById(R.id.player5);*/
+            player5 = (EditText) findViewById(R.id.player5);
 
             //views to drop onto
             group1 = (TextView)findViewById(R.id.g1);
@@ -44,11 +44,11 @@ public class MainActivity extends Activity {
             group5 = (TextView)findViewById(R.id.g5);
 
             //set long click listeners
-            player1.setOnLongClickListener (new LongClickListener());
-           /* player2.setOnLongClickListener(new LongClickListener());
-            player3.setOnLongClickListener (new LongClickListener());
+            player1.setOnLongClickListener(new LongClickListener());
+            player2.setOnLongClickListener(new LongClickListener());
+            player3.setOnLongClickListener(new LongClickListener());
             player4.setOnLongClickListener(new LongClickListener());
-            player5.setOnLongClickListener(new LongClickListener());*/
+            player5.setOnLongClickListener(new LongClickListener());
 
             //set drag listeners
             group1.setOnDragListener(new ChoiceDragListener());
@@ -135,7 +135,7 @@ public class MainActivity extends Activity {
 
     public void addListenerOnButton() {
     // Toggle between 3 player and 5 player views
-        button = (Button) findViewById(R.id.num_player_switch);
+        button = (Button) findViewById(R.id.player_switch);
         FivePlayers = findViewById(R.id.five_player);
      //   ThreePlayers = findViewById(R.id.three_player);
         SwitchText = (TextView)findViewById(R.id.player_switch_text);
@@ -146,13 +146,18 @@ public class MainActivity extends Activity {
             public void onClick(View arg0) {
                 if (FivePlayers.getVisibility() == View.VISIBLE) {
                     //    Log.d(TAG, "FivePlayers is visible");
-                    FivePlayers.setVisibility(View.INVISIBLE);
+                    //Hide the player 4 and player 5 views
+                    FivePlayers.setVisibility(View.GONE);
                     ThreePlayers.setVisibility(View.VISIBLE);
+                    player4.setVisibility(View.GONE);
+                    player5.setVisibility(View.GONE);
                     SwitchText.setText("3 Player");
                 } else {
                     //    Log.d(TAG, "FivePlayers is Invisible");
                     ThreePlayers.setVisibility(View.GONE);
                     FivePlayers.setVisibility(View.VISIBLE);
+                    player4.setVisibility(View.VISIBLE);
+                    player5.setVisibility(View.VISIBLE);
                     SwitchText.setText("5 Player");
                 }
             }
@@ -322,6 +327,11 @@ public class MainActivity extends Activity {
 
    public void reset_pool (View v){
        //Toast.makeText(getApplicationContext(), "RESETTING", Toast.LENGTH_SHORT).show();
+       player1.setText("");
+       player2.setText("");
+       player3.setText("");
+       player4.setText("");
+       player5.setText("");
        recreate();
    }
 };

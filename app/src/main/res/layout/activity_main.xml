@@ -11,7 +11,7 @@
     <RelativeLayout android:id="@+id/five_player"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <!-- ````````````````` group 1 `````````````````````````````````` -->
         <RelativeLayout android:id="@+id/p1_5"
@@ -232,12 +232,208 @@
                 android:onClick="toggle"/>
         </RelativeLayout>
 
-    <!-- ***************************** Player Ordering  ************************************-->
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+    </RelativeLayout>
 
+
+<!-- ************************   Three Player   **************************** -->
+    <RelativeLayout android:id="@+id/three_player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <!-- ````````````````` group 1 `````````````````````````````````` -->
+        <RelativeLayout android:id="@+id/p1_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp">
+
+            <TextView android:id="@+id/g1_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="70dp"
+                android:layout_margin="25dp"
+                android:layout_centerVertical="true"
+                android:hint="Group1"/>
+
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 1-5 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+            <Button android:id="@+id/b5_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/five"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b4_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b5_3"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/four"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b3_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/b4_3"
+                android:background="@drawable/three"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b2_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/two"
+                android:layout_toLeftOf="@id/b3_3"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b1_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b2_3"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/one"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+        </RelativeLayout>
+
+        <!-- ````````````````` group 2 `````````````````````````````````` -->
+        <RelativeLayout android:id="@+id/p2_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/p1_3"
+            android:layout_marginBottom="15dp">
+
+            <TextView android:id="@+id/g2_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="70dp"
+                android:layout_margin="25dp"
+                android:layout_centerVertical="true"
+                android:hint="Group2"/>
+
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 6-10 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+            <Button android:id="@+id/b10_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ten"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b9_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@id/b10_3"
+                android:background="@drawable/nine"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b8_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/eight"
+                android:layout_toLeftOf="@id/b9_3"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b7_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b8_3"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/seven"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b6_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/b7_3"
+                android:background="@drawable/six"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+
+        </RelativeLayout>
+
+        <!-- ````````````````` group 3 `````````````````````````````````` -->
+        <RelativeLayout android:id="@+id/p3_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/p2_3"
+            android:layout_marginBottom="15dp">
+
+            <TextView android:id="@+id/g3_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="70dp"
+                android:layout_margin="25dp"
+                android:layout_centerVertical="true"
+                android:hint="Group3"/>
+
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 10-15 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+            <Button android:id="@+id/b15_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/fifteen"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b14_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/fourteen"
+                android:layout_toLeftOf="@id/b15_3"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b13_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b14_3"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/thirteen"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b12_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/b13_3"
+                android:background="@drawable/twelve"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b11_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/eleven"
+                android:layout_toLeftOf="@id/b12_3"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <!-- ***************************** Player Ordering  ************************************ -->
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true">
 
         <EditText android:id="@+id/player1"
             android:layout_width="wrap_content"
@@ -246,7 +442,7 @@
             android:layout_margin="25dp"
             android:hint="Player1"/>
 
-        <!--<EditText android:id="@+id/player2"
+        <EditText android:id="@+id/player2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="50dp"
@@ -273,32 +469,33 @@
             android:textSize="50dp"
             android:layout_margin="25dp"
             android:hint="Player5"/>
--->
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <Button android:id="@+id/reset_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Reset"
-                android:onClick="reset_pool"/>
-
-            <!--      Three or Five player switch         -->
-            <TextView android:id="@+id/player_switch_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/reset_button"
-                android:text="Five Player"/>
-
-            <Switch android:id="@+id/num_player_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/num_player_switch"
-                android:showText="false"/>
-        </RelativeLayout>
-
     </LinearLayout>
+
+    <!-- Buttons -->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true">
+
+        <!--      Three or Five player switch         -->
+        <TextView android:id="@+id/player_switch_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Five Player"/>
+
+        <Switch android:id="@+id/player_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/player_switch_text"
+            android:showText="false"/>
+        <!--        Reset Button               -->
+        <Button android:id="@+id/reset_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/player_switch"
+            android:text="Reset"
+            android:onClick="reset_pool"/>
     </RelativeLayout>
+
 </RelativeLayout>
