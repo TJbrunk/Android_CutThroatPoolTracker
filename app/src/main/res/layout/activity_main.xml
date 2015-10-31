@@ -11,7 +11,7 @@
     <RelativeLayout android:id="@+id/five_player"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <!-- ````````````````` group 1 `````````````````````````````````` -->
         <RelativeLayout android:id="@+id/p1_5"
@@ -239,7 +239,7 @@
     <RelativeLayout android:id="@+id/three_player"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="invisible">
 
         <!-- ````````````````` group 1 `````````````````````````````````` -->
         <RelativeLayout android:id="@+id/p1_3"
@@ -482,13 +482,14 @@
         <TextView android:id="@+id/player_switch_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Five Player"/>
+            android:text="5 Player"/>
 
         <Switch android:id="@+id/player_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/player_switch_text"
-            android:showText="false"/>
+            android:showText="false"
+            android:onClick="switch_views"/>
         <!--        Reset Button               -->
         <Button android:id="@+id/reset_button"
             android:layout_width="wrap_content"
