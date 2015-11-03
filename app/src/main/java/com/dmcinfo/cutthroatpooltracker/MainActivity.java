@@ -163,7 +163,7 @@ public class MainActivity extends Activity {
       //  Log.d(TAG, "Ball ID is:  " + BallID);
         switch (BallID) {
             case "b1":
-            case "b3_1":
+            case "b1_3":
                 if (ball.isActivated()){
                     //Log.d(TAG, "Toggle method called in activated");
                     ball.setBackgroundResource(R.drawable.one);
@@ -175,7 +175,7 @@ public class MainActivity extends Activity {
                     ball.setActivated(true);
                 }break;
             case "b2":
-            case "b3_2":
+            case "b2_3":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.two);
                     ball.setActivated(false);
@@ -194,7 +194,7 @@ public class MainActivity extends Activity {
                     ball.setBackgroundResource(R.drawable.three_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_4":
+            case "b4_3":
             case "b4":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.four);
@@ -204,7 +204,7 @@ public class MainActivity extends Activity {
                     ball.setBackgroundResource(R.drawable.four_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_5":
+            case "b5_3":
             case "b5":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.five);
@@ -214,7 +214,7 @@ public class MainActivity extends Activity {
                     ball.setBackgroundResource(R.drawable.five_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_6":
+            case "b6_3":
             case "b6":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.six);
@@ -224,7 +224,7 @@ public class MainActivity extends Activity {
                     ball.setBackgroundResource(R.drawable.six_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_7":
+            case "b7_3":
             case "b7":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.seven);
@@ -234,7 +234,7 @@ public class MainActivity extends Activity {
                     ball.setBackgroundResource(R.drawable.seven_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_8":
+            case "b8_3":
             case "b8":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.eight);
@@ -244,7 +244,7 @@ public class MainActivity extends Activity {
                     ball.setBackgroundResource(R.drawable.eight_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_9":
+            case "b9_3":
             case "b9":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.nine);
@@ -254,7 +254,7 @@ public class MainActivity extends Activity {
                     ball.setBackgroundResource(R.drawable.nine_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_10":
+            case "b10_3":
             case "b10":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.ten);
@@ -264,7 +264,7 @@ public class MainActivity extends Activity {
                     ball.setBackgroundResource(R.drawable.ten_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_11":
+            case "b11_3":
             case "b11":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.eleven);
@@ -274,7 +274,7 @@ public class MainActivity extends Activity {
                     ball.setBackgroundResource(R.drawable.eleven_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_12":
+            case "b12_3":
             case "b12":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.twelve);
@@ -284,7 +284,7 @@ public class MainActivity extends Activity {
                     ball.setBackgroundResource(R.drawable.twelve_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_13":
+            case "b13_3":
             case "b13":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.thirteen);
@@ -294,7 +294,7 @@ public class MainActivity extends Activity {
                     ball.setBackgroundResource(R.drawable.thirteen_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_14":
+            case "b14_3":
             case "b14":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.fourteen);
@@ -304,7 +304,7 @@ public class MainActivity extends Activity {
                     ball.setBackgroundResource(R.drawable.fourteen_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_15":
+            case "b15_3":
             case "b15":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.fifteen);
