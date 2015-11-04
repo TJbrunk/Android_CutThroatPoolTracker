@@ -483,23 +483,22 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true">
 
-        <!--      Three or Five player switch         -->
-        <TextView android:id="@+id/player_switch_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5 Player"/>
+        <!--      Three or Five player button         -->
 
-        <Switch android:id="@+id/player_switch"
+        <Button android:id="@+id/player_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/player_switch_text"
-            android:showText="false"
+            android:text="3 Player"
+            android:textSize="30dp"
+            android:padding="10dp"
             android:onClick="switch_views"/>
         <!--        Reset Button               -->
         <Button android:id="@+id/reset_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/player_switch"
+            android:textSize="30dp"
+            android:padding="10dp"
+            android:layout_toRightOf="@id/player_button"
             android:text="Reset"
             android:onClick="reset_pool"/>
     </RelativeLayout>

@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
     public CharSequence dragData;
 
     View FivePlayers, ThreePlayers;
-    TextView SwitchText;
+    TextView PlayersButton;
 
 
     @Override
@@ -141,7 +141,7 @@ public class MainActivity extends Activity {
     public void switch_views (View v){
         FivePlayers = findViewById(R.id.five_player);
         ThreePlayers = findViewById(R.id.three_player);
-        SwitchText = (TextView) findViewById(R.id.player_switch_text);
+        PlayersButton = (TextView) findViewById(R.id.player_button);
     //    Toast.makeText(getApplicationContext(), "Switching modes", Toast.LENGTH_SHORT).show();
 
         if (FivePlayers.getVisibility() == View.VISIBLE){
@@ -150,7 +150,7 @@ public class MainActivity extends Activity {
             ThreePlayers.setVisibility(View.VISIBLE);
             player4.setVisibility(View.GONE);
             player5.setVisibility(View.GONE);
-            SwitchText.setText("3 Player");
+            PlayersButton.setText("5 Player");
         }
         else {
     //        Toast.makeText(getApplicationContext(), "Switching to 5 player mode", Toast.LENGTH_SHORT).show();
@@ -158,7 +158,7 @@ public class MainActivity extends Activity {
             FivePlayers.setVisibility(View.VISIBLE);
             player4.setVisibility(View.VISIBLE);
             player5.setVisibility(View.VISIBLE);
-            SwitchText.setText("5 Player");
+            PlayersButton.setText("3 Player");
         }
     }
 
