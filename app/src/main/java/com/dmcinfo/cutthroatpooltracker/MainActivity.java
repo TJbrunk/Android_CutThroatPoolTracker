@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     private static final String TAG = MainActivity.class.getSimpleName();
     private EditText player1, player2, player3, player4, player5;
-    private TextView group1, group2, group3, group4, group5;
+    private TextView group1, group2, group3, group4, group5, group1_3, group2_3, group3_3;
     public CharSequence dragData;
 
     View FivePlayers, ThreePlayers;
@@ -48,6 +48,9 @@ public class MainActivity extends Activity {
         group3 = (TextView)findViewById(R.id.g3);
         group4 = (TextView)findViewById(R.id.g4);
         group5 = (TextView)findViewById(R.id.g5);
+        group1_3 = (TextView)findViewById(R.id.g1_3);
+        group2_3 = (TextView)findViewById(R.id.g2_3);
+        group3_3 = (TextView)findViewById(R.id.g3_3);
 
         //set long click listeners
         player1.setOnLongClickListener(new LongClickListener());
@@ -62,6 +65,9 @@ public class MainActivity extends Activity {
         group3.setOnDragListener(new ChoiceDragListener());
         group4.setOnDragListener(new ChoiceDragListener());
         group5.setOnDragListener(new ChoiceDragListener());
+        group1_3.setOnDragListener(new ChoiceDragListener());
+        group2_3.setOnDragListener(new ChoiceDragListener());
+        group3_3.setOnDragListener(new ChoiceDragListener());
     }
 
     /**
@@ -70,7 +76,7 @@ public class MainActivity extends Activity {
     private final class LongClickListener implements View.OnLongClickListener {
         @Override
         public boolean onLongClick(View v) {
-            Toast.makeText(getApplicationContext(), "LONG CLICK", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(getApplicationContext(), "LONG CLICK", Toast.LENGTH_SHORT).show();
             /*
              * Drag details: we only need default behavior
              * - clip data could be set to pass data as part of drag
@@ -119,7 +125,7 @@ public class MainActivity extends Activity {
                     //make it bold to highlight the fact that an item has been dropped
                     dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
                     //set the tag in the target view being dropped on - to the ID of the view being dropped
-                    dropTarget.setTag(dropped.getId());
+                 //   dropTarget.setTag(dropped.getId());
 
                 case DragEvent.ACTION_DRAG_ENDED:
                     //no action necessary
