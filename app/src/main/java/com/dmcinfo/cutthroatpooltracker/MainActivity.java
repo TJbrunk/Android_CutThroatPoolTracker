@@ -2,7 +2,12 @@ package com.dmcinfo.cutthroatpooltracker;
 
 import android.app.Activity;
 import android.content.ClipData;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Layout;
@@ -18,8 +23,12 @@ import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends Activity {
+
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     private static final String TAG = MainActivity.class.getSimpleName();
     private EditText player1, player2, player3, player4, player5;
@@ -163,7 +172,7 @@ public class MainActivity extends Activity {
     }
 
     //     ***************************               Toggle Ball images      *************************
-   public void toggle (View ball){
+    public void toggle (View ball){
         String BallID;
         BallID = ball.getResources().getResourceName(ball.getId()).split("/")[1];
       //  Log.d(TAG, "Ball ID is:  " + BallID);
@@ -323,13 +332,114 @@ public class MainActivity extends Activity {
         }
     }
 
-   public void reset_pool (View v){
+    public void reset_pool (View v){
        //Toast.makeText(getApplicationContext(), "RESETTING", Toast.LENGTH_SHORT).show();
        player1.setText("");
+       player1.clearFocus();
        player2.setText("");
+       player2.clearFocus();
        player3.setText("");
+       player3.clearFocus();
        player4.setText("");
+       player4.clearFocus();
        player5.setText("");
+       player5.clearFocus();
+       group1.requestFocus();
        recreate();
    }
+
+
+
+    public class dbHelper extends SQLiteOpenHelper {
+       private static final  int DATABASE_VERSION = 1;
+       private static final String DATABASE_NAME = "Cutthroat_Pool.sqlite3";
+       protected static final String PLAYER_TABLE = "Players";
+
+       public static final String CREATE_PLAYER_TABLE = "create table if not exists "
+               + PLAYER_TABLE
+               + " ( _id integer primary key autoincrement," +
+               " FirstName TEXT NOT NULL," +
+               " LastName TEXT NOT NULL);";
+
+       public dbHelper(Context context) {
+           super(context, DATABASE_NAME, null, DATABASE_VERSION);
+       };
+
+       @Override
+       public void onCreate(SQLiteDatabase db) {
+           db.execSQL(CREATE_PLAYER_TABLE);
+
+           //db.close();
+       };
+
+       @Override
+       public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
+           //not sure what we want to do here, but this must be implemented
+       };
+    };
+    public class PlayerDB extends dbHelper {
+        public PlayerDB (Context context) {
+            super(context);
+        //    String db = context.getDatabasePath(dbHelper.DATABASE_NAME).toString();
+        //    Toast.makeText(getApplicationContext(), db, Toast.LENGTH_LONG).show();
+        }
+
+        private static final String COL_ID = "_id";
+        private static final String COL1 = "FirstName";
+        private static final String COL2 = "LastName";
+
+        public void addPlayer(String FName, String LName ){
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+           // values.put(COL_ID, 2);
+           // Toast.makeText(getApplicationContext(), "FName"+FName, Toast.LENGTH_LONG).show();
+            values.put(COL1, FName);
+            //Toast.makeText(getApplicationContext(), "LName"+LName, Toast.LENGTH_LONG).show();
+            values.put(COL2, LName);
+
+            long rowID;
+            rowID = db.insert(PLAYER_TABLE, null, values);
+            Toast.makeText(getApplicationContext(), "Row Created: "+rowID, Toast.LENGTH_LONG).show();
+            db.close();
+        };
+
+        public String getPlayer(){
+            String name = "none";
+            SQLiteDatabase db = this.getReadableDatabase();
+            String selectQuery = "SELECT * FROM "+PLAYER_TABLE;
+            Cursor cursor = db.rawQuery(selectQuery, null);
+
+            if (cursor.moveToFirst()){
+                Toast.makeText(getApplicationContext(), "Moving to first row", Toast.LENGTH_SHORT).show();
+                do {
+                    name = cursor.getString(1);
+                    Toast.makeText(getApplicationContext(), "Loaded"+name, Toast.LENGTH_SHORT).show();
+                    name = name+cursor.getString(2);
+                    Toast.makeText(getApplicationContext(), "Loaded"+name, Toast.LENGTH_SHORT).show();
+                } while (cursor.moveToNext());
+            }
+
+        //    Toast.makeText(getApplicationContext(), "Closing Database", Toast.LENGTH_SHORT).show();
+            db.close();
+
+        //    Toast.makeText(getApplicationContext(), "Load Complete", Toast.LENGTH_SHORT).show();
+            return name;
+        }
+    }
+
+    public void add_player (View view){
+        PlayerDB test = new PlayerDB(this);
+        test.addPlayer("Nick", "Brink");
+     //   Toast.makeText(getApplicationContext(), "Adding Player to DB", Toast.LENGTH_SHORT).show();
+    }
+
+    public void load_player (View view){
+        String name;
+        PlayerDB test = new PlayerDB(this);
+        name = test.getPlayer();
+        //view.setText(name);
+        group1.setText(name);
+    }
 };
+
+
