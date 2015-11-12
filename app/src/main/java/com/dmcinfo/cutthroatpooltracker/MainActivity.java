@@ -437,8 +437,8 @@ public class MainActivity extends Activity {
         String name;
         PlayerDB test = new PlayerDB(this);
         name = test.getPlayer();
-        //view.setText(name);
-        group1.setText(name);
+        player1.setText(name);
+        //group1.setText(name);
     }
 };
 
