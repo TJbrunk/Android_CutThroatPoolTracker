@@ -34,6 +34,7 @@ public class MainActivity extends Activity {
     private EditText player1, player2, player3, player4, player5;
     private TextView group1, group2, group3, group4, group5, group1_3, group2_3, group3_3;
     public CharSequence dragData;
+    private int pktoload = 1;
 
     View FivePlayers, ThreePlayers;
     TextView PlayersButton;
@@ -399,23 +400,23 @@ public class MainActivity extends Activity {
 
             long rowID;
             rowID = db.insert(PLAYER_TABLE, null, values);
-            Toast.makeText(getApplicationContext(), "Row Created: "+rowID, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Row Created: "+rowID, Toast.LENGTH_SHORT).show();
             db.close();
         };
 
-        public String getPlayer(){
+        public String getPlayer(int Row){
             String name = "none";
             SQLiteDatabase db = this.getReadableDatabase();
-            String selectQuery = "SELECT * FROM "+PLAYER_TABLE;
+            String selectQuery = "SELECT * FROM "+PLAYER_TABLE+" WHERE _id="+Row;
             Cursor cursor = db.rawQuery(selectQuery, null);
-
+            Toast.makeText(getApplicationContext(), "Loading where PK ="+Row, Toast.LENGTH_SHORT).show();
             if (cursor.moveToFirst()){
-                Toast.makeText(getApplicationContext(), "Moving to first row", Toast.LENGTH_SHORT).show();
+
                 do {
                     name = cursor.getString(1);
-                    Toast.makeText(getApplicationContext(), "Loaded"+name, Toast.LENGTH_SHORT).show();
-                    name = name+cursor.getString(2);
-                    Toast.makeText(getApplicationContext(), "Loaded"+name, Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(getApplicationContext(), "Loaded"+name, Toast.LENGTH_SHORT).show();
+                //    name = name+cursor.getString(2);
+                 //   Toast.makeText(getApplicationContext(), "Loaded"+name, Toast.LENGTH_SHORT).show();
                 } while (cursor.moveToNext());
             }
 
@@ -429,16 +430,36 @@ public class MainActivity extends Activity {
 
     public void add_player (View view){
         PlayerDB test = new PlayerDB(this);
-        test.addPlayer("Nick", "Brink");
+        test.addPlayer("Nick", "A");
+        test.addPlayer("Tyler", "B");
+        test.addPlayer("Otto", "G");
+        test.addPlayer("Jimmy", "C");
+        test.addPlayer("Sully", "J");
+        test.addPlayer("Boris", "C");
+        test.addPlayer("Devon", "F");
+        test.addPlayer("Tim", "Gee");
+        test.addPlayer("Guest", "-");
      //   Toast.makeText(getApplicationContext(), "Adding Player to DB", Toast.LENGTH_SHORT).show();
     }
 
     public void load_player (View view){
         String name;
+        String playerid = view.getResources().getResourceName(view.getId()).split("/")[1];
+        int IDplayer = getResources().getIdentifier(playerid, "id", "com.dmcinfo.cutthroatpooltracker");
+
+    //    Toast.makeText(getApplicationContext(), playerid, Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(getApplicationContext(), IDplayer, Toast.LENGTH_SHORT).show();
         PlayerDB test = new PlayerDB(this);
-        name = test.getPlayer();
-        player1.setText(name);
+        name = test.getPlayer(pktoload);
+
+        EditText edittext = (EditText) findViewById(IDplayer);
+        edittext.setText(name);
         //group1.setText(name);
+        pktoload = pktoload + 1;
+        if(name == "none"){
+            pktoload=1;
+        }
+
     }
 };
 

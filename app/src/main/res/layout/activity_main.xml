@@ -26,18 +26,6 @@
                 android:layout_centerVertical="true"
                 android:hint="Group1"/>
 
-            <Button android:id="@+id/but"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add"
-                android:onClick="add_player"/>
-
-            <Button android:layout_toRightOf="@id/but"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Load"
-                android:onClick="load_player"/>
-
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 1-3 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b3"
                 android:layout_width="wrap_content"
@@ -465,28 +453,32 @@
             android:layout_height="wrap_content"
             android:textSize="50dp"
             android:layout_margin="25dp"
-            android:hint="Player2"/>
+            android:hint="Player2"
+            android:onClick="load_player"/>
 
         <EditText android:id="@+id/player3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="50dp"
             android:layout_margin="25dp"
-            android:hint="Player3"/>
+            android:hint="Player3"
+            android:onClick="load_player"/>
 
         <EditText android:id="@+id/player4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="50dp"
             android:layout_margin="25dp"
-            android:hint="Player4"/>
+            android:hint="Player4"
+            android:onClick="load_player"/>
 
         <EditText android:id="@+id/player5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="50dp"
             android:layout_margin="25dp"
-            android:hint="Player5"/>
+            android:hint="Player5"
+            android:onClick="load_player"/>
     </LinearLayout>
 
     <!-- Buttons -->
@@ -514,6 +506,16 @@
             android:layout_toRightOf="@id/player_button"
             android:text="Reset"
             android:onClick="reset_pool"/>
+
+        <Button android:id="@+id/createDB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/reset_button"
+
+            android:text="Create DB"
+            android:onClick="add_player"/>
+
     </RelativeLayout>
 
 </RelativeLayout>
+
