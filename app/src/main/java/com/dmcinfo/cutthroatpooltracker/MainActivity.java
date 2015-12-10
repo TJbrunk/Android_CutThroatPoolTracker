@@ -2,180 +2,175 @@ package com.dmcinfo.cutthroatpooltracker;
 
 import android.app.Activity;
 import android.content.ClipData;
-import android.content.DialogInterface;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Typeface;
-import android.os.Debug;
-import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.internal.widget.AdapterViewCompat;
+import android.text.Layout;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SpinnerAdapter;
-import android.widget.Spinner;
-import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
 //drag and drop imports:
 import android.view.DragEvent;
-import android.view.MotionEvent;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
-import android.view.View.OnTouchListener;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends ActionBarActivity {
+
+public class MainActivity extends Activity {
+
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-        private EditText player1, player2, player3, player4, player5;
-        private TextView group1, group2, group3, group4, group5;
-        public CharSequence dragData;
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private EditText player1, player2, player3, player4, player5;
+    private TextView group1, group2, group3, group4, group5, group1_3, group2_3, group3_3;
+    public CharSequence dragData;
+    private int pktoload = 1;
+
+    View FivePlayers, ThreePlayers;
+    TextView PlayersButton;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        //views to drag
+        player1 = (EditText) findViewById(R.id.player1);
+        player2 = (EditText) findViewById(R.id.player2);
+        player3 = (EditText) findViewById(R.id.player3);
+        player4 = (EditText) findViewById(R.id.player4);
+        player5 = (EditText) findViewById(R.id.player5);
+
+        //views to drop onto
+        group1 = (TextView)findViewById(R.id.g1);
+        group2 = (TextView)findViewById(R.id.g2);
+        group3 = (TextView)findViewById(R.id.g3);
+        group4 = (TextView)findViewById(R.id.g4);
+        group5 = (TextView)findViewById(R.id.g5);
+        group1_3 = (TextView)findViewById(R.id.g1_3);
+        group2_3 = (TextView)findViewById(R.id.g2_3);
+        group3_3 = (TextView)findViewById(R.id.g3_3);
+
+        //set long click listeners
+        player1.setOnLongClickListener(new LongClickListener());
+        player2.setOnLongClickListener(new LongClickListener());
+        player3.setOnLongClickListener(new LongClickListener());
+        player4.setOnLongClickListener(new LongClickListener());
+        player5.setOnLongClickListener(new LongClickListener());
+
+        //set drag listeners
+        group1.setOnDragListener(new ChoiceDragListener());
+        group2.setOnDragListener(new ChoiceDragListener());
+        group3.setOnDragListener(new ChoiceDragListener());
+        group4.setOnDragListener(new ChoiceDragListener());
+        group5.setOnDragListener(new ChoiceDragListener());
+        group1_3.setOnDragListener(new ChoiceDragListener());
+        group2_3.setOnDragListener(new ChoiceDragListener());
+        group3_3.setOnDragListener(new ChoiceDragListener());
+    }
+
+    /**
+     * LongClickListener will handle touch events on draggable views
+     */
+    private final class LongClickListener implements View.OnLongClickListener {
+        @Override
+        public boolean onLongClick(View v) {
+          //  Toast.makeText(getApplicationContext(), "LONG CLICK", Toast.LENGTH_SHORT).show();
+            /*
+             * Drag details: we only need default behavior
+             * - clip data could be set to pass data as part of drag
+             * - shadow can be tailored
+             */
+
+                ClipData name = ClipData.newPlainText("","");
+
+                DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
+                //start dragging the item touched
+                v.startDrag(name, shadowBuilder, v, 0);
+                return true;
+        }
+    }
+
+
+    /**
+     * DragListener will handle dragged views being dropped on the drop area
+     * - only the drop action will have processing added to it as we are not
+     * - amending the default behavior for other parts of the drag process
+     */
+    private class ChoiceDragListener implements OnDragListener {
 
         @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            //  addListenerOnButton();
+        public boolean onDrag(View v, DragEvent event) {
+            switch (event.getAction()) {
+                case DragEvent.ACTION_DRAG_STARTED:
+                    //no action necessary
+                    break;
+                case DragEvent.ACTION_DRAG_ENTERED:
+                    //no action necessary
+                    break;
+                case DragEvent.ACTION_DRAG_EXITED:
+                    //no action necessary
+                    break;
+                case DragEvent.ACTION_DROP:
 
-            //views to drag
-            player1 = (EditText) findViewById(R.id.player1);
-            /*player2 = (EditText) findViewById(R.id.player2);
-            player3 = (EditText) findViewById(R.id.player3);
-            player4 = (EditText) findViewById(R.id.player4);
-            player5 = (EditText) findViewById(R.id.player5);*/
+                    //handle the dragged view being dropped over a drop view
+                    View view = (View) event.getLocalState();
+                    //view dragged item is being dropped on
+                    TextView dropTarget = (TextView) v;
+                    //view being dragged and dropped
+                    TextView dropped = (TextView) view;
+                    //update the text in the target view to reflect the data being dropped
+                    dropTarget.setText(dropped.getText().toString());
+                    //make it bold to highlight the fact that an item has been dropped
+                    dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
+                    //set the tag in the target view being dropped on - to the ID of the view being dropped
+                 //   dropTarget.setTag(dropped.getId());
 
-            //views to drop onto
-            group1 = (TextView)findViewById(R.id.g1);
-            /*group2 = (TextView)findViewById(R.id.g2);
-            group3 = (TextView)findViewById(R.id.g3);
-            group4 = (TextView)findViewById(R.id.g4);
-            group5 = (TextView)findViewById(R.id.g5);*/
-
-            //set touch listeners
-            player1.setOnLongClickListener (new LongClickListener());
-           /* player2.setOnLongClickListener(new LongClickListener());
-            player3.setOnLongClickListener (new LongClickListener());
-            player4.setOnLongClickListener(new LongClickListener());
-            player5.setOnLongClickListener(new LongClickListener());*/
-
-            //set drag listeners
-            group1.setOnDragListener(new ChoiceDragListener());
-            /*group2.setOnDragListener(new ChoiceDragListener());
-            group3.setOnDragListener(new ChoiceDragListener());
-            group4.setOnDragListener(new ChoiceDragListener());
-            group5.setOnDragListener(new ChoiceDragListener());*/
-
-        }
-
-        /**
-         * LongClickListener will handle touch events on draggable views
-         */
-        private final class LongClickListener implements View.OnLongClickListener {
-            @Override
-            public boolean onLongClick(View v) {
-                Toast.makeText(getApplicationContext(), "LONG CLICK", Toast.LENGTH_SHORT).show();
-                /*
-                 * Drag details: we only need default behavior
-                 * - clip data could be set to pass data as part of drag
-                 * - shadow can be tailored
-                 */
-
-                    ClipData name = ClipData.newPlainText("","");
-                 //   ClipData name = ClipData.newPlainText("PlayerName", "PLAYER_PLAYER");
-
-                    DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
-                    //start dragging the item touched
-                    v.startDrag(name, shadowBuilder, v, 0);
-                    return true;
+                case DragEvent.ACTION_DRAG_ENDED:
+                    //no action necessary
+                    break;
+                default:
+                    break;
             }
+            return true;
         }
+    }
 
-
-        /**
-         * DragListener will handle dragged views being dropped on the drop area
-         * - only the drop action will have processing added to it as we are not
-         * - amending the default behavior for other parts of the drag process
-         */
-        private class ChoiceDragListener implements OnDragListener {
-
-            @Override
-            public boolean onDrag(View v, DragEvent event) {
-                switch (event.getAction()) {
-                    case DragEvent.ACTION_DRAG_STARTED:
-                        //no action necessary
-                        break;
-                    case DragEvent.ACTION_DRAG_ENTERED:
-                        //no action necessary
-                        break;
-                    case DragEvent.ACTION_DRAG_EXITED:
-                        //no action necessary
-                        break;
-                    case DragEvent.ACTION_DROP:
-
-                        //handle the dragged view being dropped over a drop view
-                        View view = (View) event.getLocalState();
-                        //view dragged item is being dropped on
-                        TextView dropTarget = (TextView) v;
-                        //view being dragged and dropped
-                        TextView dropped = (TextView) view;
-                        //update the text in the target view to reflect the data being dropped
-                        dropTarget.setText(dropped.getText().toString());
-                        //make it bold to highlight the fact that an item has been dropped
-                        dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
-                        //set the tag in the target view being dropped on - to the ID of the view being dropped
-                        dropTarget.setTag(dropped.getId());
-
-                    case DragEvent.ACTION_DRAG_ENDED:
-                        //no action necessary
-                        break;
-                    default:
-                        break;
-                }
-                return true;
-            }
-        }
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-    private static final String TAG = MainActivity.class.getSimpleName();
 /* ----------------------------- 3 & 5 Player View switching ----------------------------------*/
-    Button button;
-    View FivePlayers;
-    View ThreePlayers;
-    TextView SwitchText;
-
-/*
-    public void addListenerOnButton() {
-    // Toggle between 3 player and 5 player views
-        button = (Button) findViewById(R.id.num_player_switch);
+    public void switch_views (View v){
         FivePlayers = findViewById(R.id.five_player);
         ThreePlayers = findViewById(R.id.three_player);
-        SwitchText = (TextView)findViewById(R.id.player_switch_text);
+        PlayersButton = (TextView) findViewById(R.id.player_button);
+    //    Toast.makeText(getApplicationContext(), "Switching modes", Toast.LENGTH_SHORT).show();
 
-        button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                if (FivePlayers.getVisibility() == View.VISIBLE) {
-                    //    Log.d(TAG, "FivePlayers is visible");
-                    FivePlayers.setVisibility(View.INVISIBLE);
-                    ThreePlayers.setVisibility(View.VISIBLE);
-                    SwitchText.setText("3 Player");
-                } else {
-                    //    Log.d(TAG, "FivePlayers is Invisible");
-                    ThreePlayers.setVisibility(View.GONE);
-                    FivePlayers.setVisibility(View.VISIBLE);
-                    SwitchText.setText("5 Player");
-                }
-            }
-        });
+        if (FivePlayers.getVisibility() == View.VISIBLE){
+    //        Toast.makeText(getApplicationContext(), "Switching to 3 player mode", Toast.LENGTH_SHORT).show();
+            FivePlayers.setVisibility(View.INVISIBLE);
+            ThreePlayers.setVisibility(View.VISIBLE);
+            player4.setVisibility(View.GONE);
+            player5.setVisibility(View.GONE);
+            PlayersButton.setText("5 Player");
+        }
+        else {
+    //        Toast.makeText(getApplicationContext(), "Switching to 5 player mode", Toast.LENGTH_SHORT).show();
+            ThreePlayers.setVisibility(View.INVISIBLE);
+            FivePlayers.setVisibility(View.VISIBLE);
+            player4.setVisibility(View.VISIBLE);
+            player5.setVisibility(View.VISIBLE);
+            PlayersButton.setText("3 Player");
+        }
     }
-*/
-
 
     //     ***************************               Toggle Ball images      *************************
     public void toggle (View ball){
@@ -184,7 +179,7 @@ public class MainActivity extends ActionBarActivity {
       //  Log.d(TAG, "Ball ID is:  " + BallID);
         switch (BallID) {
             case "b1":
-            case "b3_1":
+            case "b1_3":
                 if (ball.isActivated()){
                     //Log.d(TAG, "Toggle method called in activated");
                     ball.setBackgroundResource(R.drawable.one);
@@ -196,7 +191,7 @@ public class MainActivity extends ActionBarActivity {
                     ball.setActivated(true);
                 }break;
             case "b2":
-            case "b3_2":
+            case "b2_3":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.two);
                     ball.setActivated(false);
@@ -215,7 +210,7 @@ public class MainActivity extends ActionBarActivity {
                     ball.setBackgroundResource(R.drawable.three_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_4":
+            case "b4_3":
             case "b4":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.four);
@@ -225,7 +220,7 @@ public class MainActivity extends ActionBarActivity {
                     ball.setBackgroundResource(R.drawable.four_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_5":
+            case "b5_3":
             case "b5":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.five);
@@ -235,7 +230,7 @@ public class MainActivity extends ActionBarActivity {
                     ball.setBackgroundResource(R.drawable.five_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_6":
+            case "b6_3":
             case "b6":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.six);
@@ -245,7 +240,7 @@ public class MainActivity extends ActionBarActivity {
                     ball.setBackgroundResource(R.drawable.six_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_7":
+            case "b7_3":
             case "b7":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.seven);
@@ -255,7 +250,7 @@ public class MainActivity extends ActionBarActivity {
                     ball.setBackgroundResource(R.drawable.seven_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_8":
+            case "b8_3":
             case "b8":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.eight);
@@ -265,7 +260,7 @@ public class MainActivity extends ActionBarActivity {
                     ball.setBackgroundResource(R.drawable.eight_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_9":
+            case "b9_3":
             case "b9":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.nine);
@@ -275,7 +270,7 @@ public class MainActivity extends ActionBarActivity {
                     ball.setBackgroundResource(R.drawable.nine_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_10":
+            case "b10_3":
             case "b10":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.ten);
@@ -285,7 +280,7 @@ public class MainActivity extends ActionBarActivity {
                     ball.setBackgroundResource(R.drawable.ten_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_11":
+            case "b11_3":
             case "b11":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.eleven);
@@ -295,7 +290,7 @@ public class MainActivity extends ActionBarActivity {
                     ball.setBackgroundResource(R.drawable.eleven_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_12":
+            case "b12_3":
             case "b12":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.twelve);
@@ -305,7 +300,7 @@ public class MainActivity extends ActionBarActivity {
                     ball.setBackgroundResource(R.drawable.twelve_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_13":
+            case "b13_3":
             case "b13":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.thirteen);
@@ -315,7 +310,7 @@ public class MainActivity extends ActionBarActivity {
                     ball.setBackgroundResource(R.drawable.thirteen_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_14":
+            case "b14_3":
             case "b14":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.fourteen);
@@ -325,7 +320,7 @@ public class MainActivity extends ActionBarActivity {
                     ball.setBackgroundResource(R.drawable.fourteen_out);
                     ball.setActivated(true);
                 }break;
-            case "b3_15":
+            case "b15_3":
             case "b15":
                 if (ball.isActivated()){
                     ball.setBackgroundResource(R.drawable.fifteen);
@@ -338,4 +333,134 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-}
+    public void reset_pool (View v){
+       //Toast.makeText(getApplicationContext(), "RESETTING", Toast.LENGTH_SHORT).show();
+       player1.setText("");
+       player1.clearFocus();
+       player2.setText("");
+       player2.clearFocus();
+       player3.setText("");
+       player3.clearFocus();
+       player4.setText("");
+       player4.clearFocus();
+       player5.setText("");
+       player5.clearFocus();
+       group1.requestFocus();
+       recreate();
+   }
+
+
+
+    public class dbHelper extends SQLiteOpenHelper {
+       private static final  int DATABASE_VERSION = 1;
+       private static final String DATABASE_NAME = "Cutthroat_Pool.sqlite3";
+       protected static final String PLAYER_TABLE = "Players";
+
+       public static final String CREATE_PLAYER_TABLE = "create table if not exists "
+               + PLAYER_TABLE
+               + " ( _id integer primary key autoincrement," +
+               " FirstName TEXT NOT NULL," +
+               " LastName TEXT NOT NULL);";
+
+       public dbHelper(Context context) {
+           super(context, DATABASE_NAME, null, DATABASE_VERSION);
+       };
+
+       @Override
+       public void onCreate(SQLiteDatabase db) {
+           db.execSQL(CREATE_PLAYER_TABLE);
+
+           //db.close();
+       };
+
+       @Override
+       public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
+           //not sure what we want to do here, but this must be implemented
+       };
+    };
+    public class PlayerDB extends dbHelper {
+        public PlayerDB (Context context) {
+            super(context);
+        //    String db = context.getDatabasePath(dbHelper.DATABASE_NAME).toString();
+        //    Toast.makeText(getApplicationContext(), db, Toast.LENGTH_LONG).show();
+        }
+
+        private static final String COL_ID = "_id";
+        private static final String COL1 = "FirstName";
+        private static final String COL2 = "LastName";
+
+        public void addPlayer(String FName, String LName ){
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+           // values.put(COL_ID, 2);
+           // Toast.makeText(getApplicationContext(), "FName"+FName, Toast.LENGTH_LONG).show();
+            values.put(COL1, FName);
+            //Toast.makeText(getApplicationContext(), "LName"+LName, Toast.LENGTH_LONG).show();
+            values.put(COL2, LName);
+
+            long rowID;
+            rowID = db.insert(PLAYER_TABLE, null, values);
+            Toast.makeText(getApplicationContext(), "Row Created: "+rowID, Toast.LENGTH_SHORT).show();
+            db.close();
+        };
+
+        public String getPlayer(int Row){
+            String name = "none";
+            SQLiteDatabase db = this.getReadableDatabase();
+            String selectQuery = "SELECT * FROM "+PLAYER_TABLE+" WHERE _id="+Row;
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            Toast.makeText(getApplicationContext(), "Loading where PK ="+Row, Toast.LENGTH_SHORT).show();
+            if (cursor.moveToFirst()){
+
+                do {
+                    name = cursor.getString(1);
+                 //   Toast.makeText(getApplicationContext(), "Loaded"+name, Toast.LENGTH_SHORT).show();
+                //    name = name+cursor.getString(2);
+                 //   Toast.makeText(getApplicationContext(), "Loaded"+name, Toast.LENGTH_SHORT).show();
+                } while (cursor.moveToNext());
+            }
+
+        //    Toast.makeText(getApplicationContext(), "Closing Database", Toast.LENGTH_SHORT).show();
+            db.close();
+
+        //    Toast.makeText(getApplicationContext(), "Load Complete", Toast.LENGTH_SHORT).show();
+            return name;
+        }
+    }
+
+    public void add_player (View view){
+        PlayerDB test = new PlayerDB(this);
+        test.addPlayer("Nick", "A");
+        test.addPlayer("Tyler", "B");
+        test.addPlayer("Otto", "G");
+        test.addPlayer("Jimmy", "C");
+        test.addPlayer("Sully", "J");
+        test.addPlayer("Boris", "C");
+        test.addPlayer("Devon", "F");
+        test.addPlayer("Tim", "Gee");
+        test.addPlayer("Guest", "-");
+     //   Toast.makeText(getApplicationContext(), "Adding Player to DB", Toast.LENGTH_SHORT).show();
+    }
+
+    public void load_player (View view){
+        String name;
+        String playerid = view.getResources().getResourceName(view.getId()).split("/")[1];
+        int IDplayer = getResources().getIdentifier(playerid, "id", "com.dmcinfo.cutthroatpooltracker");
+
+    //    Toast.makeText(getApplicationContext(), playerid, Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(getApplicationContext(), IDplayer, Toast.LENGTH_SHORT).show();
+        PlayerDB test = new PlayerDB(this);
+        name = test.getPlayer(pktoload);
+
+        EditText edittext = (EditText) findViewById(IDplayer);
+        edittext.setText(name);
+        //group1.setText(name);
+        pktoload = pktoload + 1;
+        if(name == "none"){
+            pktoload=1;
+        }
+
+    }
+};
+
+
