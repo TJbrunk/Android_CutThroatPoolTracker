@@ -18,17 +18,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <TextView android:id="@+id/g1"
+            <Spinner android:id="@+id/g1"
                 android:layout_width="wrap_content"
+                android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
                 android:layout_centerVertical="true"
+                android:background="#C0C0C0"
+                android:popupBackground="#C0C0C0"
                 android:hint="Group1"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 1-3 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b3"
                 android:layout_width="wrap_content"
+                android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_alignParentRight="true"
@@ -38,6 +42,7 @@
 
             <Button android:id="@+id/b2"
                 android:layout_width="wrap_content"
+                android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="25dp"
                 android:layout_marginLeft="25dp"
@@ -48,6 +53,7 @@
 
             <Button android:id="@+id/b1"
                 android:layout_width="wrap_content"
+                android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/b2"
                 android:layout_marginRight="25dp"
@@ -62,12 +68,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/p1_5">
 
-            <TextView android:id="@+id/g2"
+            <Spinner android:id="@+id/g2"
                 android:layout_width="wrap_content"
+                android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
                 android:layout_centerVertical="true"
+                android:background="#C0C0C0"
+                android:popupBackground="#C0C0C0"
                 android:hint="Group2"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 4-6 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
@@ -106,12 +115,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/p2_5">
 
-            <TextView android:id="@+id/g3"
+            <Spinner android:id="@+id/g3"
                 android:layout_width="wrap_content"
+                android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
                 android:layout_centerVertical="true"
+                android:background="#C0C0C0"
+                android:popupBackground="#C0C0C0"
                 android:hint="Group3"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 7-9 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
@@ -150,12 +162,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/p3_5">
 
-            <TextView android:id="@+id/g4"
+            <Spinner android:id="@+id/g4"
                 android:layout_width="wrap_content"
+                android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
                 android:layout_centerVertical="true"
+                android:background="#C0C0C0"
+                android:popupBackground="#C0C0C0"
                 android:hint="Group4"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 10-12 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
@@ -194,12 +209,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/p4_5">
 
-            <TextView android:id="@+id/g5"
+            <Spinner android:id="@+id/g5"
                 android:layout_width="wrap_content"
+                android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
                 android:layout_centerVertical="true"
+                android:background="#C0C0C0"
+                android:popupBackground="#C0C0C0"
                 android:hint="Group5"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 13-15 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
@@ -247,12 +265,15 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp">
 
-            <TextView android:id="@+id/g1_3"
+            <Spinner android:id="@+id/g1_3"
                 android:layout_width="wrap_content"
+                android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
                 android:layout_centerVertical="true"
+                android:background="#C0C0C0"
+                android:popupBackground="#C0C0C0"
                 android:hint="Group1"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 1-5 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
@@ -309,12 +330,15 @@
             android:layout_below="@id/p1_3"
             android:layout_marginBottom="15dp">
 
-            <TextView android:id="@+id/g2_3"
+            <Spinner android:id="@+id/g2_3"
                 android:layout_width="wrap_content"
+                android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
                 android:layout_centerVertical="true"
+                android:background="#C0C0C0"
+                android:popupBackground="#C0C0C0"
                 android:hint="Group2"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 6-10 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
@@ -372,12 +396,15 @@
             android:layout_below="@id/p2_3"
             android:layout_marginBottom="15dp">
 
-            <TextView android:id="@+id/g3_3"
+            <Spinner android:id="@+id/g3_3"
                 android:layout_width="wrap_content"
+                android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
                 android:layout_centerVertical="true"
+                android:background="#C0C0C0"
+                android:popupBackground="#C0C0C0"
                 android:hint="Group3"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 10-15 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
@@ -440,45 +467,55 @@
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true">
 
-        <EditText android:id="@+id/player1"
+        <Spinner android:id="@+id/player1"
             android:layout_width="wrap_content"
+            android:minWidth="100dp"
             android:layout_height="wrap_content"
             android:textSize="50dp"
             android:layout_margin="25dp"
-            android:hint="Player1"
-            android:onClick="load_player"/>
+            android:background="#C0C0C0"
+            android:popupBackground="#C0C0C0"
+            android:hint="Player1"/>
 
-        <EditText android:id="@+id/player2"
+        <Spinner android:id="@+id/player2"
             android:layout_width="wrap_content"
+            android:minWidth="100dp"
             android:layout_height="wrap_content"
             android:textSize="50dp"
             android:layout_margin="25dp"
-            android:hint="Player2"
-            android:onClick="load_player"/>
+            android:background="#C0C0C0"
+            android:popupBackground="#C0C0C0"
+            android:hint="Player2"/>
 
-        <EditText android:id="@+id/player3"
+        <Spinner android:id="@+id/player3"
             android:layout_width="wrap_content"
+            android:minWidth="100dp"
             android:layout_height="wrap_content"
             android:textSize="50dp"
             android:layout_margin="25dp"
-            android:hint="Player3"
-            android:onClick="load_player"/>
+            android:background="#C0C0C0"
+            android:popupBackground="#C0C0C0"
+            android:hint="Player3"/>
 
-        <EditText android:id="@+id/player4"
+        <Spinner android:id="@+id/player4"
             android:layout_width="wrap_content"
+            android:minWidth="100dp"
             android:layout_height="wrap_content"
             android:textSize="50dp"
             android:layout_margin="25dp"
-            android:hint="Player4"
-            android:onClick="load_player"/>
+            android:background="#C0C0C0"
+            android:popupBackground="#C0C0C0"
+            android:hint="Player4"/>
 
-        <EditText android:id="@+id/player5"
+        <Spinner android:id="@+id/player5"
             android:layout_width="wrap_content"
+            android:minWidth="100dp"
             android:layout_height="wrap_content"
             android:textSize="50dp"
             android:layout_margin="25dp"
-            android:hint="Player5"
-            android:onClick="load_player"/>
+            android:background="#C0C0C0"
+            android:popupBackground="#C0C0C0"
+            android:hint="Player5"/>
     </LinearLayout>
 
     <!-- Buttons -->
@@ -493,7 +530,7 @@
         <Button android:id="@+id/player_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3 Player"
+            android:text="5 Player"
             android:textSize="30dp"
             android:padding="10dp"
             android:onClick="switch_views"/>
@@ -506,14 +543,6 @@
             android:layout_toRightOf="@id/player_button"
             android:text="Reset"
             android:onClick="reset_pool"/>
-
-        <Button android:id="@+id/createDB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/reset_button"
-
-            android:text="Create DB"
-            android:onClick="add_player"/>
 
     </RelativeLayout>
 
