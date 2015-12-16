@@ -25,10 +25,7 @@
                 android:minHeight="70dp"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
-                android:layout_centerVertical="true"
-                android:background="#808080"
-                android:popupBackground="#808080"
-                android:hint="Group1"/>
+                android:layout_centerVertical="true"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 1-3 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b3"
@@ -76,10 +73,7 @@
                 android:minHeight="70dp"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
-                android:layout_centerVertical="true"
-                android:background="#808080"
-                android:popupBackground="#808080"
-                android:hint="Group2"/>
+                android:layout_centerVertical="true"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 4-6 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b6"
@@ -124,10 +118,7 @@
                 android:minHeight="70dp"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
-                android:layout_centerVertical="true"
-                android:background="#808080"
-                android:popupBackground="#808080"
-                android:hint="Group3"/>
+                android:layout_centerVertical="true"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 7-9 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b9"
@@ -172,10 +163,7 @@
                 android:minHeight="70dp"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
-                android:layout_centerVertical="true"
-                android:background="#808080"
-                android:popupBackground="#808080"
-                android:hint="Group4"/>
+                android:layout_centerVertical="true"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 10-12 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b12"
@@ -220,10 +208,7 @@
                 android:minHeight="70dp"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
-                android:layout_centerVertical="true"
-                android:background="#808080"
-                android:popupBackground="#808080"
-                android:hint="Group5"/>
+                android:layout_centerVertical="true"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 13-15 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b15"
@@ -277,10 +262,7 @@
                 android:minHeight="70dp"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
-                android:layout_centerVertical="true"
-                android:background="#808080"
-                android:popupBackground="#808080"
-                android:hint="Group1"/>
+                android:layout_centerVertical="true"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 1-5 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b5_3"
@@ -343,10 +325,7 @@
                 android:minHeight="70dp"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
-                android:layout_centerVertical="true"
-                android:background="#808080"
-                android:popupBackground="#808080"
-                android:hint="Group2"/>
+                android:layout_centerVertical="true"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 6-10 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b10_3"
@@ -410,10 +389,7 @@
                 android:minHeight="70dp"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
-                android:layout_centerVertical="true"
-                android:background="#808080"
-                android:popupBackground="#808080"
-                android:hint="Group3"/>
+                android:layout_centerVertical="true"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 10-15 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b15_3"
@@ -466,9 +442,9 @@
 
     <!-- ***************************** Player Ordering  ************************************ -->
     <!-- Dummy item to prevent player input from receiving focus -->
-    <LinearLayout
+    <!--<LinearLayout
         android:focusable="true" android:focusableInTouchMode="true"
-        android:layout_width="0px" android:layout_height="0px"/>
+        android:layout_width="0px" android:layout_height="0px"/>-->
 
     <LinearLayout
     android:layout_width="match_parent"
@@ -481,10 +457,7 @@
             android:minWidth="100dp"
             android:minHeight="70dp"
             android:textSize="70dp"
-            android:layout_margin="25dp"
-            android:background="#808080"
-            android:popupBackground="#808080"
-            android:hint="Player1"/>
+            android:layout_margin="25dp"/>
 
         <Spinner android:id="@+id/player2"
             android:layout_width="wrap_content"
@@ -492,10 +465,7 @@
             android:minWidth="100dp"
             android:minHeight="70dp"
             android:textSize="70dp"
-            android:layout_margin="25dp"
-            android:background="#808080"
-            android:popupBackground="#808080"
-            android:hint="Player2"/>
+            android:layout_margin="25dp"/>
 
         <Spinner android:id="@+id/player3"
             android:layout_width="wrap_content"
@@ -503,10 +473,7 @@
             android:minWidth="100dp"
             android:minHeight="70dp"
             android:textSize="70dp"
-            android:layout_margin="25dp"
-            android:background="#808080"
-            android:popupBackground="#808080"
-            android:hint="Player3"/>
+            android:layout_margin="25dp"/>
 
         <Spinner android:id="@+id/player4"
             android:layout_width="wrap_content"
@@ -514,10 +481,7 @@
             android:minWidth="100dp"
             android:minHeight="70dp"
             android:textSize="70dp"
-            android:layout_margin="25dp"
-            android:background="#808080"
-            android:popupBackground="#808080"
-            android:hint="Player4"/>
+            android:layout_margin="25dp"/>
 
         <Spinner android:id="@+id/player5"
             android:layout_width="wrap_content"
@@ -525,10 +489,7 @@
             android:minWidth="100dp"
             android:minHeight="70dp"
             android:textSize="70dp"
-            android:layout_margin="25dp"
-            android:background="#808080"
-            android:popupBackground="#808080"
-            android:hint="Player5"/>
+            android:layout_margin="25dp"/>
     </LinearLayout>
 
     <!-- Buttons -->

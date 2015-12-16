@@ -176,6 +176,7 @@ public class MainActivity extends Activity {
             player5.setVisibility(View.VISIBLE);
             PlayersButton.setText("5 Player");
         }
+        AddPlayerToGame();
     }
 
     //     ***************************               Toggle Ball images      *************************
@@ -417,6 +418,7 @@ public class MainActivity extends Activity {
 
     public void add_players (){
         playerDB = new PlayerDB(this);
+        playerDB.addPlayer("Guest", "-");
         playerDB.addPlayer("Nick", "A");
         playerDB.addPlayer("Tyler", "B");
         playerDB.addPlayer("Otto", "G");
@@ -425,7 +427,6 @@ public class MainActivity extends Activity {
         playerDB.addPlayer("Boris", "C");
         playerDB.addPlayer("Devon", "F");
         playerDB.addPlayer("Tim", "Gee");
-        playerDB.addPlayer("Guest", "-");
 
         load_players();
     }
@@ -434,7 +435,7 @@ public class MainActivity extends Activity {
         int i = 1;
         this.players = new ArrayList();
         this.players.clear();
-        this.players.add(""); // Add black player so that none can be selected
+        //this.players.add(""); // Add black player so that none can be selected
         while (this.playerDB.getPlayer(i) != "none") {
             this.players.add(this.playerDB.getPlayer(i));
             i += 1;
@@ -509,9 +510,10 @@ public class MainActivity extends Activity {
 
     private void AddPlayerToGame()
     {
+        FivePlayers = findViewById(R.id.five_player);
         this.groups = new ArrayList();
         this.groups.clear();
-        this.groups.add(""); // Add blank player to list
+        this.groups.add("New Player"); // Add blank player to list
         if (player1.getSelectedItem() != "") {
             this.groups.add(player1.getSelectedItem());
         }
@@ -521,11 +523,13 @@ public class MainActivity extends Activity {
         if (player3.getSelectedItem() != "") {
             this.groups.add(player3.getSelectedItem());
         }
-        if (player4.getSelectedItem() != "") {
-            this.groups.add(player4.getSelectedItem());
-        }
-        if (player5.getSelectedItem() != "") {
-            this.groups.add(player5.getSelectedItem());
+        if (FivePlayers.getVisibility() == View.VISIBLE) {
+            if (player4.getSelectedItem() != "Guest") {
+                this.groups.add(player4.getSelectedItem());
+            }
+            if (player5.getSelectedItem() != "Guest") {
+                this.groups.add(player5.getSelectedItem());
+            }
         }
         ArrayAdapter adapter = new ArrayAdapter(this, com.dmcinfo.cutthroatpooltracker.R.layout.player_dropdown_item, groups);
         group1.setAdapter(adapter);
