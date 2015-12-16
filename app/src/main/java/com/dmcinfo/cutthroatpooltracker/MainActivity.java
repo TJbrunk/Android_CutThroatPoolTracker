@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
@@ -17,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Scroller;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -441,7 +439,7 @@ public class MainActivity extends Activity {
             this.players.add(this.playerDB.getPlayer(i));
             i += 1;
         }
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, this.players);
+        ArrayAdapter adapter = new ArrayAdapter(this, com.dmcinfo.cutthroatpooltracker.R.layout.player_dropdown_item, this.players);
         player1.setAdapter(adapter);
         player2.setAdapter(adapter);
         player3.setAdapter(adapter);
@@ -529,7 +527,7 @@ public class MainActivity extends Activity {
         if (player5.getSelectedItem() != "") {
             this.groups.add(player5.getSelectedItem());
         }
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, groups);
+        ArrayAdapter adapter = new ArrayAdapter(this, com.dmcinfo.cutthroatpooltracker.R.layout.player_dropdown_item, groups);
         group1.setAdapter(adapter);
         group1_3.setAdapter(adapter);
         group2.setAdapter(adapter);
