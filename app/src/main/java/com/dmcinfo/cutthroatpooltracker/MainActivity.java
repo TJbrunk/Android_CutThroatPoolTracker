@@ -346,6 +346,7 @@ public class MainActivity extends Activity {
         player3.setSelection(0);
         player4.setSelection(0);
         player5.setSelection(0);
+        recreate();
    }
 
 
