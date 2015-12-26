@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.media.Image;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
@@ -35,7 +36,7 @@ public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private Spinner player1, player2, player3, player4, player5;
     private Spinner group1, group2, group3, group4, group5, group1_3, group2_3, group3_3;
-    private ArrayList players, groups;
+    private ArrayList players, groups, ballsInPlay;
     private PlayerDB playerDB;
     public CharSequence dragData;
     private int pktoload = 1;
@@ -84,6 +85,13 @@ public class MainActivity extends Activity {
         group3_3.setOnDragListener(new ChoiceDragListener());
 */
         this.add_players();
+
+        // Initialize the balls in play list
+        ballsInPlay = new ArrayList();
+        for (int i = 1; i<16; i++) {
+            ballsInPlay.add(i);
+        }
+
     }
 
     /**
@@ -187,156 +195,181 @@ public class MainActivity extends Activity {
         switch (BallID) {
             case "b1":
             case "b1_3":
-                if (ball.isActivated()){
-                    //Log.d(TAG, "Toggle method called in activated");
-                    ball.setBackgroundResource(R.drawable.one);
-                    ball.setActivated(false);
-                }
-                else{
-                    //Log.d(TAG, "Toggle method called in NON activated");
-                    ball.setBackgroundResource(R.drawable.one_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 1, R.drawable.one, R.drawable.one_out);
+                break;
             case "b2":
             case "b2_3":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.two);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.two_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 2, R.drawable.two, R.drawable.two_out);
+                break;
             case "b3":
             case "b3_3":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.three);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.three_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 3, R.drawable.three, R.drawable.three_out);
+                break;
             case "b4_3":
             case "b4":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.four);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.four_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 4, R.drawable.four, R.drawable.four_out);
+                break;
             case "b5_3":
             case "b5":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.five);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.five_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 5, R.drawable.five, R.drawable.five_out);
+                break;
             case "b6_3":
             case "b6":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.six);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.six_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 6, R.drawable.six, R.drawable.six_out);
+                break;
             case "b7_3":
             case "b7":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.seven);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.seven_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 7, R.drawable.seven, R.drawable.seven_out);
+                break;
             case "b8_3":
             case "b8":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.eight);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.eight_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 8, R.drawable.eight, R.drawable.eight_out);
+                break;
             case "b9_3":
             case "b9":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.nine);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.nine_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 9, R.drawable.nine, R.drawable.nine_out);
+                break;
             case "b10_3":
             case "b10":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.ten);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.ten_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 10, R.drawable.ten, R.drawable.ten_out);
+                break;
             case "b11_3":
             case "b11":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.eleven);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.eleven_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 11, R.drawable.eleven, R.drawable.eleven_out);
+                break;
             case "b12_3":
             case "b12":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.twelve);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.twelve_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 12, R.drawable.twelve, R.drawable.twelve_out);
+                break;
             case "b13_3":
             case "b13":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.thirteen);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.thirteen_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 13, R.drawable.thirteen, R.drawable.thirteen_out);
+                break;
             case "b14_3":
             case "b14":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.fourteen);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.fourteen_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 14, R.drawable.fourteen, R.drawable.fourteen_out);
+                break;
             case "b15_3":
             case "b15":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.fifteen);
-                    ball.setActivated(false);
+                ToggleBall(ball, 15, R.drawable.fifteen, R.drawable.fifteen_out);
+                break;
+        }
+
+        this.IsGameOver();
+    }
+
+    private void ToggleBall(View ball, int number, int normalImage, int outImage)
+    {
+        if (ball.isActivated()){
+            ball.setBackgroundResource(normalImage);
+            ball.setActivated(false);
+            ballsInPlay.add(number);
+        }
+        else
+        {
+            ball.setBackgroundResource(outImage);
+            ball.setActivated(true);
+            ballsInPlay.remove(ballsInPlay.indexOf(number));
+        }
+    }
+
+    private void IsGameOver()
+    {
+        boolean is3Player;
+        int activePlayers = 0;
+        int activePlayer = 0;
+        if (is3Player = ThreePlayers.getVisibility() == View.VISIBLE)
+        {
+            if (ballsInPlay.size() < 6)
+            {
+                // for each ball in play check who it belongs to
+                for (Object item:ballsInPlay) {
+                    if ((int)item < 6 && activePlayer != 1) {
+                        activePlayers += 1;
+                        activePlayer = 1;
+                    } else if ((int) item > 5 && (int)item < 11 && activePlayer != 2) {
+                        activePlayers += 1;
+                        activePlayer = 2;
+                    } else if ((int)item > 10 && activePlayer != 3){
+                        activePlayers += 1;
+                        activePlayer = 3;
+                    }
+                    // break out of the loop if more than one active player
+                    if (activePlayers > 1) {
+                        break;
+                    }
                 }
-                else{
-                    ball.setBackgroundResource(R.drawable.fifteen_out);
-                    ball.setActivated(true);
-                }break;
+            }
+        }
+        else
+        {
+            if (ballsInPlay.size() < 4)
+            {
+                // for each ball in play check who it belongs to
+                for (Object item:ballsInPlay) {
+                    if ((int)item < 4 && activePlayer != 1) {
+                        activePlayers += 1;
+                        activePlayer = 1;
+                    } else if ((int)item > 3 && (int)item < 7 && activePlayer != 2) {
+                        activePlayers += 1;
+                        activePlayer = 2;
+                    } else if ((int)item > 6 && (int)item < 10 && activePlayer != 3) {
+                        activePlayers += 1;
+                        activePlayer = 3;
+                    } else if ((int)item > 9 && (int)item < 13 && activePlayer != 4) {
+                        activePlayers += 1;
+                        activePlayer = 4;
+                    } else if ((int)item > 12 && activePlayer != 5){
+                        activePlayers += 1;
+                        activePlayer = 5;
+                    }
+                    // break out of the loop if more than one active player
+                    if (activePlayers > 1) {
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Create a popup with the winners name if there is one active player left
+        if (activePlayers == 1) {
+            Toast.makeText(this, this.GetWinningPlayer(activePlayer, is3Player) + " is the last one standing", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private String GetWinningPlayer(int player, boolean is3Player)
+    {
+        if (is3Player)
+        {
+            switch(player)
+            {
+                case 1:
+                    return group1_3.getSelectedItem().toString();
+                case 2:
+                    return group2_3.getSelectedItem().toString();
+                case 3:
+                    return group3_3.getSelectedItem().toString();
+                default:
+                    return "";
+            }
+        }
+        else
+        {
+            switch(player)
+            {
+                case 1:
+                    return group1.getSelectedItem().toString();
+                case 2:
+                    return group2.getSelectedItem().toString();
+                case 3:
+                    return group3.getSelectedItem().toString();
+                case 4:
+                    return group4.getSelectedItem().toString();
+                case 5:
+                    return group5.getSelectedItem().toString();
+                default:
+                    return "";
+            }
         }
     }
 
