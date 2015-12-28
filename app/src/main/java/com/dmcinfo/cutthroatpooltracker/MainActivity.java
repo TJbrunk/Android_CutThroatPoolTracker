@@ -8,13 +8,16 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Typeface;
+import android.media.Image;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 //drag and drop imports:
@@ -31,8 +34,10 @@ public class MainActivity extends Activity {
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     private static final String TAG = MainActivity.class.getSimpleName();
-    private EditText player1, player2, player3, player4, player5;
-    private TextView group1, group2, group3, group4, group5, group1_3, group2_3, group3_3;
+    private Spinner player1, player2, player3, player4, player5;
+    private Spinner group1, group2, group3, group4, group5, group1_3, group2_3, group3_3;
+    private ArrayList players, groups, ballsInPlay;
+    private PlayerDB playerDB;
     public CharSequence dragData;
     private int pktoload = 1;
 
@@ -46,22 +51,22 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         //views to drag
-        player1 = (EditText) findViewById(R.id.player1);
-        player2 = (EditText) findViewById(R.id.player2);
-        player3 = (EditText) findViewById(R.id.player3);
-        player4 = (EditText) findViewById(R.id.player4);
-        player5 = (EditText) findViewById(R.id.player5);
+        player1 = (Spinner) findViewById(R.id.player1);
+        player2 = (Spinner) findViewById(R.id.player2);
+        player3 = (Spinner) findViewById(R.id.player3);
+        player4 = (Spinner) findViewById(R.id.player4);
+        player5 = (Spinner) findViewById(R.id.player5);
 
         //views to drop onto
-        group1 = (TextView)findViewById(R.id.g1);
-        group2 = (TextView)findViewById(R.id.g2);
-        group3 = (TextView)findViewById(R.id.g3);
-        group4 = (TextView)findViewById(R.id.g4);
-        group5 = (TextView)findViewById(R.id.g5);
-        group1_3 = (TextView)findViewById(R.id.g1_3);
-        group2_3 = (TextView)findViewById(R.id.g2_3);
-        group3_3 = (TextView)findViewById(R.id.g3_3);
-
+        group1 = (Spinner)findViewById(R.id.g1);
+        group2 = (Spinner)findViewById(R.id.g2);
+        group3 = (Spinner)findViewById(R.id.g3);
+        group4 = (Spinner)findViewById(R.id.g4);
+        group5 = (Spinner)findViewById(R.id.g5);
+        group1_3 = (Spinner)findViewById(R.id.g1_3);
+        group2_3 = (Spinner)findViewById(R.id.g2_3);
+        group3_3 = (Spinner)findViewById(R.id.g3_3);
+/*
         //set long click listeners
         player1.setOnLongClickListener(new LongClickListener());
         player2.setOnLongClickListener(new LongClickListener());
@@ -78,20 +83,30 @@ public class MainActivity extends Activity {
         group1_3.setOnDragListener(new ChoiceDragListener());
         group2_3.setOnDragListener(new ChoiceDragListener());
         group3_3.setOnDragListener(new ChoiceDragListener());
+*/
+        this.add_players();
+
+        // Initialize the balls in play list
+        ballsInPlay = new ArrayList();
+        for (int i = 1; i<16; i++) {
+            ballsInPlay.add(i);
+        }
+
     }
 
     /**
      * LongClickListener will handle touch events on draggable views
      */
-    private final class LongClickListener implements View.OnLongClickListener {
+
+    /*private final class LongClickListener implements View.OnLongClickListener {
         @Override
         public boolean onLongClick(View v) {
           //  Toast.makeText(getApplicationContext(), "LONG CLICK", Toast.LENGTH_SHORT).show();
-            /*
+            *//*
              * Drag details: we only need default behavior
              * - clip data could be set to pass data as part of drag
              * - shadow can be tailored
-             */
+             *//*
 
                 ClipData name = ClipData.newPlainText("","");
 
@@ -100,7 +115,7 @@ public class MainActivity extends Activity {
                 v.startDrag(name, shadowBuilder, v, 0);
                 return true;
         }
-    }
+    }*/
 
 
     /**
@@ -108,7 +123,7 @@ public class MainActivity extends Activity {
      * - only the drop action will have processing added to it as we are not
      * - amending the default behavior for other parts of the drag process
      */
-    private class ChoiceDragListener implements OnDragListener {
+    /*private class ChoiceDragListener implements OnDragListener {
 
         @Override
         public boolean onDrag(View v, DragEvent event) {
@@ -145,31 +160,31 @@ public class MainActivity extends Activity {
             }
             return true;
         }
-    }
+    }*/
 
 /* ----------------------------- 3 & 5 Player View switching ----------------------------------*/
     public void switch_views (View v){
         FivePlayers = findViewById(R.id.five_player);
         ThreePlayers = findViewById(R.id.three_player);
         PlayersButton = (TextView) findViewById(R.id.player_button);
-    //    Toast.makeText(getApplicationContext(), "Switching modes", Toast.LENGTH_SHORT).show();
 
         if (FivePlayers.getVisibility() == View.VISIBLE){
-    //        Toast.makeText(getApplicationContext(), "Switching to 3 player mode", Toast.LENGTH_SHORT).show();
             FivePlayers.setVisibility(View.INVISIBLE);
             ThreePlayers.setVisibility(View.VISIBLE);
             player4.setVisibility(View.GONE);
+            player4.setSelection(0);
             player5.setVisibility(View.GONE);
-            PlayersButton.setText("5 Player");
+            player5.setSelection(0);
+            PlayersButton.setText("3 Player");
         }
         else {
-    //        Toast.makeText(getApplicationContext(), "Switching to 5 player mode", Toast.LENGTH_SHORT).show();
             ThreePlayers.setVisibility(View.INVISIBLE);
             FivePlayers.setVisibility(View.VISIBLE);
             player4.setVisibility(View.VISIBLE);
             player5.setVisibility(View.VISIBLE);
-            PlayersButton.setText("3 Player");
+            PlayersButton.setText("5 Player");
         }
+        AddPlayerToGame();
     }
 
     //     ***************************               Toggle Ball images      *************************
@@ -180,175 +195,192 @@ public class MainActivity extends Activity {
         switch (BallID) {
             case "b1":
             case "b1_3":
-                if (ball.isActivated()){
-                    //Log.d(TAG, "Toggle method called in activated");
-                    ball.setBackgroundResource(R.drawable.one);
-                    ball.setActivated(false);
-                }
-                else{
-                    //Log.d(TAG, "Toggle method called in NON activated");
-                    ball.setBackgroundResource(R.drawable.one_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 1, R.drawable.one, R.drawable.one_out);
+                break;
             case "b2":
             case "b2_3":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.two);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.two_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 2, R.drawable.two, R.drawable.two_out);
+                break;
             case "b3":
             case "b3_3":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.three);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.three_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 3, R.drawable.three, R.drawable.three_out);
+                break;
             case "b4_3":
             case "b4":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.four);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.four_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 4, R.drawable.four, R.drawable.four_out);
+                break;
             case "b5_3":
             case "b5":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.five);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.five_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 5, R.drawable.five, R.drawable.five_out);
+                break;
             case "b6_3":
             case "b6":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.six);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.six_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 6, R.drawable.six, R.drawable.six_out);
+                break;
             case "b7_3":
             case "b7":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.seven);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.seven_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 7, R.drawable.seven, R.drawable.seven_out);
+                break;
             case "b8_3":
             case "b8":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.eight);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.eight_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 8, R.drawable.eight, R.drawable.eight_out);
+                break;
             case "b9_3":
             case "b9":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.nine);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.nine_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 9, R.drawable.nine, R.drawable.nine_out);
+                break;
             case "b10_3":
             case "b10":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.ten);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.ten_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 10, R.drawable.ten, R.drawable.ten_out);
+                break;
             case "b11_3":
             case "b11":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.eleven);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.eleven_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 11, R.drawable.eleven, R.drawable.eleven_out);
+                break;
             case "b12_3":
             case "b12":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.twelve);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.twelve_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 12, R.drawable.twelve, R.drawable.twelve_out);
+                break;
             case "b13_3":
             case "b13":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.thirteen);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.thirteen_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 13, R.drawable.thirteen, R.drawable.thirteen_out);
+                break;
             case "b14_3":
             case "b14":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.fourteen);
-                    ball.setActivated(false);
-                }
-                else{
-                    ball.setBackgroundResource(R.drawable.fourteen_out);
-                    ball.setActivated(true);
-                }break;
+                ToggleBall(ball, 14, R.drawable.fourteen, R.drawable.fourteen_out);
+                break;
             case "b15_3":
             case "b15":
-                if (ball.isActivated()){
-                    ball.setBackgroundResource(R.drawable.fifteen);
-                    ball.setActivated(false);
+                ToggleBall(ball, 15, R.drawable.fifteen, R.drawable.fifteen_out);
+                break;
+        }
+
+        this.IsGameOver();
+    }
+
+    private void ToggleBall(View ball, int number, int normalImage, int outImage)
+    {
+        if (ball.isActivated()){
+            ball.setBackgroundResource(normalImage);
+            ball.setActivated(false);
+            ballsInPlay.add(number);
+        }
+        else
+        {
+            ball.setBackgroundResource(outImage);
+            ball.setActivated(true);
+            ballsInPlay.remove(ballsInPlay.indexOf(number));
+        }
+    }
+
+    private void IsGameOver()
+    {
+        boolean is3Player;
+        int activePlayers = 0;
+        int activePlayer = 0;
+        if (is3Player = ThreePlayers.getVisibility() == View.VISIBLE)
+        {
+            if (ballsInPlay.size() < 6)
+            {
+                // for each ball in play check who it belongs to
+                for (Object item:ballsInPlay) {
+                    if ((int)item < 6 && activePlayer != 1) {
+                        activePlayers += 1;
+                        activePlayer = 1;
+                    } else if ((int) item > 5 && (int)item < 11 && activePlayer != 2) {
+                        activePlayers += 1;
+                        activePlayer = 2;
+                    } else if ((int)item > 10 && activePlayer != 3){
+                        activePlayers += 1;
+                        activePlayer = 3;
+                    }
+                    // break out of the loop if more than one active player
+                    if (activePlayers > 1) {
+                        break;
+                    }
                 }
-                else{
-                    ball.setBackgroundResource(R.drawable.fifteen_out);
-                    ball.setActivated(true);
-                }break;
+            }
+        }
+        else
+        {
+            if (ballsInPlay.size() < 4)
+            {
+                // for each ball in play check who it belongs to
+                for (Object item:ballsInPlay) {
+                    if ((int)item < 4 && activePlayer != 1) {
+                        activePlayers += 1;
+                        activePlayer = 1;
+                    } else if ((int)item > 3 && (int)item < 7 && activePlayer != 2) {
+                        activePlayers += 1;
+                        activePlayer = 2;
+                    } else if ((int)item > 6 && (int)item < 10 && activePlayer != 3) {
+                        activePlayers += 1;
+                        activePlayer = 3;
+                    } else if ((int)item > 9 && (int)item < 13 && activePlayer != 4) {
+                        activePlayers += 1;
+                        activePlayer = 4;
+                    } else if ((int)item > 12 && activePlayer != 5){
+                        activePlayers += 1;
+                        activePlayer = 5;
+                    }
+                    // break out of the loop if more than one active player
+                    if (activePlayers > 1) {
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Create a popup with the winners name if there is one active player left
+        if (activePlayers == 1) {
+            Toast.makeText(this, this.GetWinningPlayer(activePlayer, is3Player) + " is the last one standing", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private String GetWinningPlayer(int player, boolean is3Player)
+    {
+        if (is3Player)
+        {
+            switch(player)
+            {
+                case 1:
+                    return group1_3.getSelectedItem().toString();
+                case 2:
+                    return group2_3.getSelectedItem().toString();
+                case 3:
+                    return group3_3.getSelectedItem().toString();
+                default:
+                    return "";
+            }
+        }
+        else
+        {
+            switch(player)
+            {
+                case 1:
+                    return group1.getSelectedItem().toString();
+                case 2:
+                    return group2.getSelectedItem().toString();
+                case 3:
+                    return group3.getSelectedItem().toString();
+                case 4:
+                    return group4.getSelectedItem().toString();
+                case 5:
+                    return group5.getSelectedItem().toString();
+                default:
+                    return "";
+            }
         }
     }
 
     public void reset_pool (View v){
-       //Toast.makeText(getApplicationContext(), "RESETTING", Toast.LENGTH_SHORT).show();
-       player1.setText("");
-       player1.clearFocus();
-       player2.setText("");
-       player2.clearFocus();
-       player3.setText("");
-       player3.clearFocus();
-       player4.setText("");
-       player4.clearFocus();
-       player5.setText("");
-       player5.clearFocus();
-       group1.requestFocus();
-       recreate();
+        player1.setSelection(0);
+        player2.setSelection(0);
+        player3.setSelection(0);
+        player4.setSelection(0);
+        player5.setSelection(0);
+        recreate();
    }
-
 
 
     public class dbHelper extends SQLiteOpenHelper {
@@ -356,21 +388,23 @@ public class MainActivity extends Activity {
        private static final String DATABASE_NAME = "Cutthroat_Pool.sqlite3";
        protected static final String PLAYER_TABLE = "Players";
 
-       public static final String CREATE_PLAYER_TABLE = "create table if not exists "
+       private static final String CREATE_PLAYER_TABLE = "create table if not exists "
                + PLAYER_TABLE
                + " ( _id integer primary key autoincrement," +
                " FirstName TEXT NOT NULL," +
                " LastName TEXT NOT NULL);";
 
+        private static final String DROP_PLAYER_TABLE = "drop table if exists " + PLAYER_TABLE;
+
        public dbHelper(Context context) {
            super(context, DATABASE_NAME, null, DATABASE_VERSION);
+           context.deleteDatabase(DATABASE_NAME);
        };
 
        @Override
        public void onCreate(SQLiteDatabase db) {
+           db.execSQL(DROP_PLAYER_TABLE);
            db.execSQL(CREATE_PLAYER_TABLE);
-
-           //db.close();
        };
 
        @Override
@@ -381,8 +415,6 @@ public class MainActivity extends Activity {
     public class PlayerDB extends dbHelper {
         public PlayerDB (Context context) {
             super(context);
-        //    String db = context.getDatabasePath(dbHelper.DATABASE_NAME).toString();
-        //    Toast.makeText(getApplicationContext(), db, Toast.LENGTH_LONG).show();
         }
 
         private static final String COL_ID = "_id";
@@ -392,15 +424,11 @@ public class MainActivity extends Activity {
         public void addPlayer(String FName, String LName ){
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues values = new ContentValues();
-           // values.put(COL_ID, 2);
-           // Toast.makeText(getApplicationContext(), "FName"+FName, Toast.LENGTH_LONG).show();
+
             values.put(COL1, FName);
-            //Toast.makeText(getApplicationContext(), "LName"+LName, Toast.LENGTH_LONG).show();
             values.put(COL2, LName);
 
-            long rowID;
-            rowID = db.insert(PLAYER_TABLE, null, values);
-            Toast.makeText(getApplicationContext(), "Row Created: "+rowID, Toast.LENGTH_SHORT).show();
+            db.insert(PLAYER_TABLE, null, values);
             db.close();
         };
 
@@ -409,57 +437,143 @@ public class MainActivity extends Activity {
             SQLiteDatabase db = this.getReadableDatabase();
             String selectQuery = "SELECT * FROM "+PLAYER_TABLE+" WHERE _id="+Row;
             Cursor cursor = db.rawQuery(selectQuery, null);
-            Toast.makeText(getApplicationContext(), "Loading where PK ="+Row, Toast.LENGTH_SHORT).show();
             if (cursor.moveToFirst()){
 
                 do {
                     name = cursor.getString(1);
-                 //   Toast.makeText(getApplicationContext(), "Loaded"+name, Toast.LENGTH_SHORT).show();
-                //    name = name+cursor.getString(2);
-                 //   Toast.makeText(getApplicationContext(), "Loaded"+name, Toast.LENGTH_SHORT).show();
                 } while (cursor.moveToNext());
             }
 
-        //    Toast.makeText(getApplicationContext(), "Closing Database", Toast.LENGTH_SHORT).show();
             db.close();
 
-        //    Toast.makeText(getApplicationContext(), "Load Complete", Toast.LENGTH_SHORT).show();
             return name;
         }
     }
 
-    public void add_player (View view){
-        PlayerDB test = new PlayerDB(this);
-        test.addPlayer("Nick", "A");
-        test.addPlayer("Tyler", "B");
-        test.addPlayer("Otto", "G");
-        test.addPlayer("Jimmy", "C");
-        test.addPlayer("Sully", "J");
-        test.addPlayer("Boris", "C");
-        test.addPlayer("Devon", "F");
-        test.addPlayer("Tim", "Gee");
-        test.addPlayer("Guest", "-");
-     //   Toast.makeText(getApplicationContext(), "Adding Player to DB", Toast.LENGTH_SHORT).show();
+    public void add_players (){
+        playerDB = new PlayerDB(this);
+        playerDB.addPlayer("Guest", "-");
+        playerDB.addPlayer("Nick", "A");
+        playerDB.addPlayer("Tyler", "B");
+        playerDB.addPlayer("Otto", "G");
+        playerDB.addPlayer("Jimmy", "C");
+        playerDB.addPlayer("Sully", "J");
+        playerDB.addPlayer("Boris", "C");
+        playerDB.addPlayer("Devon", "F");
+        playerDB.addPlayer("Tim", "Gee");
+
+        load_players();
     }
 
-    public void load_player (View view){
-        String name;
-        String playerid = view.getResources().getResourceName(view.getId()).split("/")[1];
-        int IDplayer = getResources().getIdentifier(playerid, "id", "com.dmcinfo.cutthroatpooltracker");
-
-    //    Toast.makeText(getApplicationContext(), playerid, Toast.LENGTH_SHORT).show();
-     //   Toast.makeText(getApplicationContext(), IDplayer, Toast.LENGTH_SHORT).show();
-        PlayerDB test = new PlayerDB(this);
-        name = test.getPlayer(pktoload);
-
-        EditText edittext = (EditText) findViewById(IDplayer);
-        edittext.setText(name);
-        //group1.setText(name);
-        pktoload = pktoload + 1;
-        if(name == "none"){
-            pktoload=1;
+    private void load_players (){
+        int i = 1;
+        this.players = new ArrayList();
+        this.players.clear();
+        //this.players.add(""); // Add black player so that none can be selected
+        while (this.playerDB.getPlayer(i) != "none") {
+            this.players.add(this.playerDB.getPlayer(i));
+            i += 1;
         }
+        ArrayAdapter adapter = new ArrayAdapter(this, com.dmcinfo.cutthroatpooltracker.R.layout.player_dropdown_item, this.players);
+        player1.setAdapter(adapter);
+        player2.setAdapter(adapter);
+        player3.setAdapter(adapter);
+        player4.setAdapter(adapter);
+        player5.setAdapter(adapter);
 
+        player1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                AddPlayerToGame();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        player2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                AddPlayerToGame();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        player3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                AddPlayerToGame();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        player4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                AddPlayerToGame();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        player5.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                AddPlayerToGame();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    private void AddPlayerToGame()
+    {
+        FivePlayers = findViewById(R.id.five_player);
+        this.groups = new ArrayList();
+        this.groups.clear();
+        this.groups.add("New Player"); // Add blank player to list
+        if (player1.getSelectedItem() != "") {
+            this.groups.add(player1.getSelectedItem());
+        }
+        if (player2.getSelectedItem() != "") {
+            this.groups.add(player2.getSelectedItem());
+        }
+        if (player3.getSelectedItem() != "") {
+            this.groups.add(player3.getSelectedItem());
+        }
+        if (FivePlayers.getVisibility() == View.VISIBLE) {
+            if (player4.getSelectedItem() != "Guest") {
+                this.groups.add(player4.getSelectedItem());
+            }
+            if (player5.getSelectedItem() != "Guest") {
+                this.groups.add(player5.getSelectedItem());
+            }
+        }
+        ArrayAdapter adapter = new ArrayAdapter(this, com.dmcinfo.cutthroatpooltracker.R.layout.player_dropdown_item, groups);
+        group1.setAdapter(adapter);
+        group1_3.setAdapter(adapter);
+        group2.setAdapter(adapter);
+        group2_3.setAdapter(adapter);
+        group3.setAdapter(adapter);
+        group3_3.setAdapter(adapter);
+        group4.setAdapter(adapter);
+        group5.setAdapter(adapter);
     }
 };
 
