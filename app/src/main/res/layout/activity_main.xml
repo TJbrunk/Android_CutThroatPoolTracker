@@ -18,17 +18,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <TextView android:id="@+id/g1"
+            <Spinner android:id="@+id/g1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
-                android:layout_centerVertical="true"
-                android:hint="Group1"/>
+                android:layout_centerVertical="true"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 1-3 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b3"
                 android:layout_width="wrap_content"
+                android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_alignParentRight="true"
@@ -38,6 +40,7 @@
 
             <Button android:id="@+id/b2"
                 android:layout_width="wrap_content"
+                android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="25dp"
                 android:layout_marginLeft="25dp"
@@ -48,6 +51,7 @@
 
             <Button android:id="@+id/b1"
                 android:layout_width="wrap_content"
+                android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/b2"
                 android:layout_marginRight="25dp"
@@ -55,19 +59,21 @@
                 android:layout_centerVertical="true"
                 android:onClick="toggle"/>
         </RelativeLayout>
+
         <!-- ````````````````` group 2 `````````````````````````````````` -->
         <RelativeLayout android:id="@+id/p2_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/p1_5">
 
-            <TextView android:id="@+id/g2"
+            <Spinner android:id="@+id/g2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
-                android:layout_centerVertical="true"
-                android:hint="Group2"/>
+                android:layout_centerVertical="true"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 4-6 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b6"
@@ -99,20 +105,20 @@
                 android:onClick="toggle"/>
         </RelativeLayout>
 
-
         <!-- ````````````````` group 3 `````````````````````````````````` -->
         <RelativeLayout android:id="@+id/p3_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/p2_5">
 
-            <TextView android:id="@+id/g3"
+            <Spinner android:id="@+id/g3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
-                android:layout_centerVertical="true"
-                android:hint="Group3"/>
+                android:layout_centerVertical="true"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 7-9 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b9"
@@ -150,13 +156,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/p3_5">
 
-            <TextView android:id="@+id/g4"
+            <Spinner android:id="@+id/g4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
-                android:layout_centerVertical="true"
-                android:hint="Group4"/>
+                android:layout_centerVertical="true"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 10-12 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b12"
@@ -194,13 +201,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/p4_5">
 
-            <TextView android:id="@+id/g5"
+            <Spinner android:id="@+id/g5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
                 android:textSize="70dp"
                 android:layout_margin="25dp"
-                android:layout_centerVertical="true"
-                android:hint="Group5"/>
+                android:layout_centerVertical="true"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 13-15 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b15"
@@ -231,58 +239,296 @@
                 android:layout_centerVertical="true"
                 android:onClick="toggle"/>
         </RelativeLayout>
-    <!-- ***************************** Player Ordering  ************************************-->
-        <LinearLayout
+
+    </RelativeLayout>
+
+
+<!-- ************************   Three Player   **************************** -->
+    <RelativeLayout android:id="@+id/three_player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
+        <!-- ````````````````` group 1 `````````````````````````````````` -->
+        <RelativeLayout android:id="@+id/p1_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp">
+
+            <Spinner android:id="@+id/g1_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"
+                android:layout_centerVertical="true"/>
+
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 1-5 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+            <Button android:id="@+id/b5_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/five"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b4_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b5_3"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/four"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b3_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/b4_3"
+                android:background="@drawable/three"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b2_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/two"
+                android:layout_toLeftOf="@id/b3_3"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b1_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b2_3"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/one"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+        </RelativeLayout>
+
+        <!-- ````````````````` group 2 `````````````````````````````````` -->
+        <RelativeLayout android:id="@+id/p2_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/p1_3"
+            android:layout_marginBottom="15dp">
+
+            <Spinner android:id="@+id/g2_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"
+                android:layout_centerVertical="true"/>
+
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 6-10 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+            <Button android:id="@+id/b10_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ten"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b9_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@id/b10_3"
+                android:background="@drawable/nine"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b8_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/eight"
+                android:layout_toLeftOf="@id/b9_3"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b7_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b8_3"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/seven"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b6_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/b7_3"
+                android:background="@drawable/six"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+
+        </RelativeLayout>
+
+        <!-- ````````````````` group 3 `````````````````````````````````` -->
+        <RelativeLayout android:id="@+id/p3_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/p2_3"
+            android:layout_marginBottom="15dp">
+
+            <Spinner android:id="@+id/g3_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"
+                android:layout_centerVertical="true"/>
+
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 10-15 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+            <Button android:id="@+id/b15_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/fifteen"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b14_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/fourteen"
+                android:layout_toLeftOf="@id/b15_3"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b13_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b14_3"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/thirteen"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b12_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/b13_3"
+                android:background="@drawable/twelve"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b11_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/eleven"
+                android:layout_toLeftOf="@id/b12_3"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <!-- ***************************** Player Ordering  ************************************ -->
+    <!-- Dummy item to prevent player input from receiving focus -->
+    <!--<LinearLayout
+        android:focusable="true" android:focusableInTouchMode="true"
+        android:layout_width="0px" android:layout_height="0px"/>-->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
+        <LinearLayout
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
 
-        <EditText android:id="@+id/player1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="50dp"
-            android:layout_margin="25dp"
-            android:hint="Player1"/>
+            <Spinner android:id="@+id/player1"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minWidth="100dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"/>
 
-        <EditText android:id="@+id/player2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="50dp"
-            android:layout_margin="25dp"
-            android:hint="Player2"/>
+            <Spinner android:id="@+id/player2"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minWidth="100dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"/>
 
-        <EditText android:id="@+id/player3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="50dp"
-            android:layout_margin="25dp"
-            android:hint="Player3"/>
+            <Spinner android:id="@+id/player3"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minWidth="100dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"/>
 
-        <EditText android:id="@+id/player4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="50dp"
-            android:layout_margin="25dp"
-            android:hint="Player4"/>
+            <Spinner android:id="@+id/player4"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minWidth="100dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"/>
 
-        <EditText android:id="@+id/player5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="50dp"
-            android:layout_margin="25dp"
-            android:hint="Player5"/>
-        <!--      Three or Five player switch         -->
-        <TextView android:id="@+id/player_switch_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Five Player"/>
+            <Spinner android:id="@+id/player5"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minWidth="100dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"/>
+        </LinearLayout>
 
-        <Switch android:id="@+id/num_player_switch"
+        <!-- Buttons -->
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:showText="false"/>
+            android:layout_height="match_parent">
+
+            <!--      Three or Five player button         -->
+
+            <Button android:id="@+id/player_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="5 Player"
+                android:textSize="30dp"
+                android:padding="10dp"
+                android:onClick="switch_views"/>
+            <!--        Reset Button               -->
+            <Button android:id="@+id/reset_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:textSize="30dp"
+                android:padding="10dp"
+                android:layout_toRightOf="@id/player_button"
+                android:text="Reset"
+                android:onClick="reset_pool"/>
+
+        </RelativeLayout>
 
     </LinearLayout>
-    </RelativeLayout>
 </RelativeLayout>
+
