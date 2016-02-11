@@ -1,34 +1,21 @@
 package com.dmcinfo.cutthroatpooltracker;
 
 import android.app.Activity;
-import android.content.ClipData;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.media.Image;
 import android.os.Bundle;
-import android.text.Layout;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-//drag and drop imports:
-import android.view.DragEvent;
-import android.view.View.DragShadowBuilder;
-import android.view.View.OnDragListener;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
-
 
 public class MainActivity extends Activity {
 
@@ -48,6 +35,8 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Initialize the balls in play list
+        ResetBallsInPlay();
         setContentView(R.layout.activity_main);
 
         //views to drag
@@ -66,101 +55,14 @@ public class MainActivity extends Activity {
         group1_3 = (Spinner)findViewById(R.id.g1_3);
         group2_3 = (Spinner)findViewById(R.id.g2_3);
         group3_3 = (Spinner)findViewById(R.id.g3_3);
-/*
-        //set long click listeners
-        player1.setOnLongClickListener(new LongClickListener());
-        player2.setOnLongClickListener(new LongClickListener());
-        player3.setOnLongClickListener(new LongClickListener());
-        player4.setOnLongClickListener(new LongClickListener());
-        player5.setOnLongClickListener(new LongClickListener());
 
-        //set drag listeners
-        group1.setOnDragListener(new ChoiceDragListener());
-        group2.setOnDragListener(new ChoiceDragListener());
-        group3.setOnDragListener(new ChoiceDragListener());
-        group4.setOnDragListener(new ChoiceDragListener());
-        group5.setOnDragListener(new ChoiceDragListener());
-        group1_3.setOnDragListener(new ChoiceDragListener());
-        group2_3.setOnDragListener(new ChoiceDragListener());
-        group3_3.setOnDragListener(new ChoiceDragListener());
-*/
+        FivePlayers = findViewById(R.id.five_player);
+        ThreePlayers = findViewById(R.id.three_player);
+        ThreePlayers.setVisibility(View.INVISIBLE);
+        FivePlayers.setVisibility(View.VISIBLE);
+
         this.add_players();
-
-        // Initialize the balls in play list
-        ballsInPlay = new ArrayList();
-        for (int i = 1; i<16; i++) {
-            ballsInPlay.add(i);
-        }
-
     }
-
-    /**
-     * LongClickListener will handle touch events on draggable views
-     */
-
-    /*private final class LongClickListener implements View.OnLongClickListener {
-        @Override
-        public boolean onLongClick(View v) {
-          //  Toast.makeText(getApplicationContext(), "LONG CLICK", Toast.LENGTH_SHORT).show();
-            *//*
-             * Drag details: we only need default behavior
-             * - clip data could be set to pass data as part of drag
-             * - shadow can be tailored
-             *//*
-
-                ClipData name = ClipData.newPlainText("","");
-
-                DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
-                //start dragging the item touched
-                v.startDrag(name, shadowBuilder, v, 0);
-                return true;
-        }
-    }*/
-
-
-    /**
-     * DragListener will handle dragged views being dropped on the drop area
-     * - only the drop action will have processing added to it as we are not
-     * - amending the default behavior for other parts of the drag process
-     */
-    /*private class ChoiceDragListener implements OnDragListener {
-
-        @Override
-        public boolean onDrag(View v, DragEvent event) {
-            switch (event.getAction()) {
-                case DragEvent.ACTION_DRAG_STARTED:
-                    //no action necessary
-                    break;
-                case DragEvent.ACTION_DRAG_ENTERED:
-                    //no action necessary
-                    break;
-                case DragEvent.ACTION_DRAG_EXITED:
-                    //no action necessary
-                    break;
-                case DragEvent.ACTION_DROP:
-
-                    //handle the dragged view being dropped over a drop view
-                    View view = (View) event.getLocalState();
-                    //view dragged item is being dropped on
-                    TextView dropTarget = (TextView) v;
-                    //view being dragged and dropped
-                    TextView dropped = (TextView) view;
-                    //update the text in the target view to reflect the data being dropped
-                    dropTarget.setText(dropped.getText().toString());
-                    //make it bold to highlight the fact that an item has been dropped
-                    dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
-                    //set the tag in the target view being dropped on - to the ID of the view being dropped
-                 //   dropTarget.setTag(dropped.getId());
-
-                case DragEvent.ACTION_DRAG_ENDED:
-                    //no action necessary
-                    break;
-                default:
-                    break;
-            }
-            return true;
-        }
-    }*/
 
 /* ----------------------------- 3 & 5 Player View switching ----------------------------------*/
     public void switch_views (View v){
@@ -185,13 +87,13 @@ public class MainActivity extends Activity {
             PlayersButton.setText("5 Player");
         }
         AddPlayerToGame();
+        ResetBallsInPlay();
     }
 
     //     ***************************               Toggle Ball images      *************************
     public void toggle (View ball){
         String BallID;
         BallID = ball.getResources().getResourceName(ball.getId()).split("/")[1];
-      //  Log.d(TAG, "Ball ID is:  " + BallID);
         switch (BallID) {
             case "b1":
             case "b1_3":
@@ -379,6 +281,7 @@ public class MainActivity extends Activity {
         player3.setSelection(0);
         player4.setSelection(0);
         player5.setSelection(0);
+        ResetBallsInPlay();
         recreate();
    }
 
@@ -574,6 +477,14 @@ public class MainActivity extends Activity {
         group3_3.setAdapter(adapter);
         group4.setAdapter(adapter);
         group5.setAdapter(adapter);
+    }
+
+    private void ResetBallsInPlay()
+    {
+        ballsInPlay = new ArrayList();
+        for (int i = 1; i<16; i++) {
+            ballsInPlay.add(i);
+        }
     }
 };
 
