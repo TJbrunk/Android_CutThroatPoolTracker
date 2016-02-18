@@ -285,7 +285,6 @@ public class MainActivity extends Activity {
         recreate();
    }
 
-
     public class dbHelper extends SQLiteOpenHelper {
        private static final  int DATABASE_VERSION = 1;
        private static final String DATABASE_NAME = "Cutthroat_Pool.sqlite3";
@@ -301,12 +300,11 @@ public class MainActivity extends Activity {
 
        public dbHelper(Context context) {
            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-           context.deleteDatabase(DATABASE_NAME);
+           //context.deleteDatabase(DATABASE_NAME); Uncomment this if you need to delete the database
        };
 
        @Override
        public void onCreate(SQLiteDatabase db) {
-           db.execSQL(DROP_PLAYER_TABLE);
            db.execSQL(CREATE_PLAYER_TABLE);
        };
 
@@ -323,22 +321,24 @@ public class MainActivity extends Activity {
         private static final String COL_ID = "_id";
         private static final String COL1 = "FirstName";
         private static final String COL2 = "LastName";
+        private static final String COL3 = "Wins";
 
-        public void addPlayer(String FName, String LName ){
-            SQLiteDatabase db = this.getWritableDatabase();
-            ContentValues values = new ContentValues();
+        public void addPlayer(String FirstName, String LastName ){
+            if(!playerExists(FirstName,LastName)) {
+                SQLiteDatabase db = this.getWritableDatabase();
+                ContentValues values = new ContentValues();
 
-            values.put(COL1, FName);
-            values.put(COL2, LName);
-
-            db.insert(PLAYER_TABLE, null, values);
-            db.close();
+                values.put(COL1, FirstName);
+                values.put(COL2, LastName);
+                db.insert(PLAYER_TABLE, null, values);
+                db.close();
+            }
         };
 
         public String getPlayer(int Row){
             String name = "none";
             SQLiteDatabase db = this.getReadableDatabase();
-            String selectQuery = "SELECT * FROM "+PLAYER_TABLE+" WHERE _id="+Row;
+            String selectQuery = "SELECT * FROM "+ PLAYER_TABLE +" WHERE _id=" + Row;
             Cursor cursor = db.rawQuery(selectQuery, null);
             if (cursor.moveToFirst()){
 
@@ -351,18 +351,31 @@ public class MainActivity extends Activity {
 
             return name;
         }
+
+        public boolean playerExists(String FName, String LName){
+            SQLiteDatabase db = this.getReadableDatabase();
+            String query = "SELECT COUNT(*) FROM " + PLAYER_TABLE + " WHERE FirstName = ? AND LastName = ?";
+            Cursor c = db.rawQuery(query, new String[] {FName,LName});
+            if (c.moveToFirst())
+            {
+                return c.getInt(0) > 0;
+            }
+            else {
+                return false;
+            }
+        }
     }
 
     public void add_players (){
         playerDB = new PlayerDB(this);
         playerDB.addPlayer("Guest", "-");
-        playerDB.addPlayer("Nick", "A");
-        playerDB.addPlayer("Tyler", "B");
-        playerDB.addPlayer("Otto", "G");
-        playerDB.addPlayer("Jimmy", "C");
-        playerDB.addPlayer("Sully", "J");
-        playerDB.addPlayer("Boris", "C");
-        playerDB.addPlayer("Devon", "F");
+        playerDB.addPlayer("Nick", "Aroneseno");
+        playerDB.addPlayer("Tyler", "Brink");
+        playerDB.addPlayer("Otto", "Gottlieb");
+        playerDB.addPlayer("Jimmy", "Condon");
+        playerDB.addPlayer("Sully", "John");
+        playerDB.addPlayer("Boris", "Cherkasskiy");
+        playerDB.addPlayer("Devon", "Fritz");
         playerDB.addPlayer("Tim", "Gee");
 
         load_players();
