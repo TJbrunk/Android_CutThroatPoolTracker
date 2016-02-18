@@ -4,6 +4,6 @@
     android:layout_height="wrap_content"
     android:textSize="70dp"
     android:textColor="@color/white"
-    android:background="@color/darkGray"
+    android:background="@color/black"
     android:textAlignment="center"
     android:minWidth="150dp"/>
