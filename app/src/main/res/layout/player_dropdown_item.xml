@@ -6,4 +6,4 @@
     android:textColor="@color/white"
     android:background="@color/black"
     android:textAlignment="center"
-    android:minWidth="150dp"/>
+    android:minWidth="300dp"/>
