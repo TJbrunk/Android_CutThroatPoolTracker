@@ -433,28 +433,28 @@ public class MainActivity extends Activity {
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-//                        Toast.makeText(getApplicationContext(), response.substring(0, 500), Toast.LENGTH_LONG).show();
-                        try {
-                            ReadJsonMessage(response);
-                        }
-                        catch (JSONException e){
-                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
-                        }
+            new Response.Listener<String>()
+            {
+                @Override
+                public void onResponse(String response)
+                {
+//                  Toast.makeText(getApplicationContext(), response.substring(0, 500), Toast.LENGTH_LONG).show();
+                    try {
+                        ReadJsonMessage(response);
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "That didn't work!", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    catch (JSONException e){
+                        Toast.makeText(getApplicationContext(), "JSON Error", Toast.LENGTH_LONG).show();
+                    }
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getApplicationContext(), "Unable to contact camera", Toast.LENGTH_SHORT).show();
+                }
+            });
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
-        Toast.makeText(getApplicationContext(), "TEST", Toast.LENGTH_SHORT).show();
-
     }
 
 //    public void ReadJsonArray(String jsonArrayString) throws JSONException
