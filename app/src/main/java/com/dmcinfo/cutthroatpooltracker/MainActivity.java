@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     private static final String TAG = MainActivity.class.getSimpleName();
     private Spinner player1, player2, player3, player4, player5;
     private Spinner group1, group2, group3, group4, group5, group1_3, group2_3, group3_3;
@@ -433,26 +433,26 @@ public class MainActivity extends Activity {
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-            new Response.Listener<String>()
-            {
-                @Override
-                public void onResponse(String response)
+                new Response.Listener<String>()
                 {
+                    @Override
+                    public void onResponse(String response)
+                    {
 //                  Toast.makeText(getApplicationContext(), response.substring(0, 500), Toast.LENGTH_LONG).show();
-                    try {
-                        ReadJsonMessage(response);
+                        try {
+                            ReadJsonMessage(response);
+                        }
+                        catch (JSONException e){
+                            Toast.makeText(getApplicationContext(), "JSON Error", Toast.LENGTH_LONG).show();
+                        }
                     }
-                    catch (JSONException e){
-                        Toast.makeText(getApplicationContext(), "JSON Error", Toast.LENGTH_LONG).show();
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Unable to contact camera", Toast.LENGTH_SHORT).show();
                     }
-                }
-            },
-            new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(), "Unable to contact camera", Toast.LENGTH_SHORT).show();
-                }
-            });
+                });
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
     }
@@ -473,12 +473,6 @@ public class MainActivity extends Activity {
         Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
         title = jsonObject.getString("title");
         Toast.makeText(getApplicationContext(), title, Toast.LENGTH_LONG).show();
-
-//                Toast.makeText(getApplicationContext(), body, Toast.LENGTH_LONG).show();
-//                Toast.makeText(getApplicationContext(), Long.toString(id), Toast.LENGTH_LONG).show();
-
     }
 
 }
-
-
