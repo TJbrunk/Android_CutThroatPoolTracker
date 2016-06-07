@@ -464,15 +464,35 @@ public class MainActivity extends Activity {
 
     public void ReadJsonMessage(String jsonString) throws JSONException
     {
-        JSONArray jsonArray = new JSONArray(jsonString);
-        long id = -1;
-        String title = null;
-        String body = null;
+        String jsonTest = "[{\"Ball\":1,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":1}},{\"Ball\":2,\"In Play\":true,\"Location\":{\"X\":2,\"Y\":3}},{\"Ball\":3,\"In Play\":false,\"Location\":{\"X\":4,\"Y\":5}}]";
+        JSONArray jsonArray = new JSONArray(jsonTest);
+        //JSONArray jsonArray = new JSONArray("[{\"Ball\":1,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":1}},{\"Ball\":2,\"In Play\":true,\"Location\":{\"X\":2,\"Y\":3}},{\"Ball\":3,\"In Play\":false,\"Location\":{\"X\":4,\"Y\":5}}]");
+        Integer iBall;
+        String sBall;
+        Boolean InPlay;
+        /*Integer LocationX = null;
+        Integer LocationY = null;*/
 
-        JSONObject jsonObject =  jsonArray.getJSONObject(1);
-        Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
-        title = jsonObject.getString("title");
-        Toast.makeText(getApplicationContext(), title, Toast.LENGTH_LONG).show();
+        for (int j = 0; j< jsonArray.length() ; j++)
+        {
+            JSONObject jsonObject =  jsonArray.getJSONObject(j);
+            iBall = jsonObject.getInt("Ball");
+            sBall = iBall.toString();
+            InPlay = jsonObject.getBoolean("In Play");
+            if(InPlay)
+            {
+                Toast.makeText(getApplicationContext(), "Ball "+ sBall +" is in play", Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Ball "+ sBall +" is pocketed", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+        //JSONObject jsonObject =  jsonArray.getJSONObject(1);
+        //Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
+        //title = jsonObject.getString("title");
+        //Toast.makeText(getApplicationContext(), title, Toast.LENGTH_LONG).show();
     }
 
 }
