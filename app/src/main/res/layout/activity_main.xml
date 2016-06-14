@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.dmcinfo.cutthroatpooltracker.MainActivity">
+    tools:context="com.dmcinfo.cutthroatpooltracker.MainActivity"
+    android:background="#000000">
 
     <!-- *****************   Five Player  *********************** -->
     <RelativeLayout android:id="@+id/five_player"
@@ -440,6 +441,13 @@
                 android:onClick="toggle"/>
         </RelativeLayout>
 
+        <TextView android:id="@+id/txtDisplay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/p3_3"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="193dp" />
+
     </RelativeLayout>
 
     <!-- ***************************** Player Ordering  ************************************ -->
@@ -515,7 +523,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:text="5 Player"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:padding="10dp"
                 android:onClick="switch_views"/>
             <!--        Reset Button               -->
@@ -523,7 +531,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:padding="10dp"
                 android:layout_toRightOf="@id/player_button"
                 android:text="Reset"
@@ -532,13 +540,11 @@
             <Button android:id="@+id/update_balls"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="UPDATE BALLS"
-                android:textSize="30dp"
+                android:layout_alignParentBottom="true"
+                android:text="Refresh"
+                android:textSize="15dp"
+                android:layout_toRightOf="@id/reset_button"
                 android:onClick="UpdateBallsInPlay"/>
-
-            <TextView android:id="@+id/txtDisplay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
 
         </RelativeLayout>
 
