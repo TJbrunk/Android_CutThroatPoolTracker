@@ -10,437 +10,437 @@
     tools:context="com.dmcinfo.cutthroatpooltracker.MainActivity">
 
     <!-- *****************   Five Player  *********************** -->
-    <!--<RelativeLayout android:id="@+id/five_player"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:visibility="visible">-->
+    <RelativeLayout android:id="@+id/five_player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
 
-        <!--&lt;!&ndash; ````````````````` group 1 `````````````````````````````````` &ndash;&gt;-->
-        <!--<RelativeLayout android:id="@+id/p1_5"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content">-->
+        <!-- ````````````````` group 1 `````````````````````````````````` -->
+        <RelativeLayout android:id="@+id/p1_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <!--<Spinner android:id="@+id/g1"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:minWidth="150dp"-->
-                <!--android:minHeight="70dp"-->
-                <!--android:textSize="70dp"-->
-                <!--android:layout_margin="25dp"-->
-                <!--android:layout_centerVertical="true"/>-->
+            <Spinner android:id="@+id/g1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"
+                android:layout_centerVertical="true"/>
 
-            <!--&lt;!&ndash; ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 1-3 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  &ndash;&gt;-->
-            <!--<Button android:id="@+id/b3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:minWidth="100dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="25dp"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:background="@drawable/three"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 1-3 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+            <Button android:id="@+id/b3"
+                android:layout_width="wrap_content"
+                android:minWidth="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/three"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
 
-            <!--<Button android:id="@+id/b2"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:minWidth="100dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginRight="25dp"-->
-                <!--android:layout_marginLeft="25dp"-->
-                <!--android:background="@drawable/two"-->
-                <!--android:layout_toLeftOf="@id/b3"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:onClick="toggle"/>-->
+            <Button android:id="@+id/b2"
+                android:layout_width="wrap_content"
+                android:minWidth="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/two"
+                android:layout_toLeftOf="@id/b3"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
 
-            <!--<Button android:id="@+id/b1"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:minWidth="100dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_toLeftOf="@id/b2"-->
-                <!--android:layout_marginRight="25dp"-->
-                <!--android:background="@drawable/one"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
-        <!--</RelativeLayout>-->
+            <Button android:id="@+id/b1"
+                android:layout_width="wrap_content"
+                android:minWidth="100dp"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b2"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/one"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+        </RelativeLayout>
 
-        <!--&lt;!&ndash; ````````````````` group 2 `````````````````````````````````` &ndash;&gt;-->
-        <!--<RelativeLayout android:id="@+id/p2_5"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@id/p1_5">-->
+        <!-- ````````````````` group 2 `````````````````````````````````` -->
+        <RelativeLayout android:id="@+id/p2_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/p1_5">
 
-            <!--<Spinner android:id="@+id/g2"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:minWidth="150dp"-->
-                <!--android:minHeight="70dp"-->
-                <!--android:textSize="70dp"-->
-                <!--android:layout_margin="25dp"-->
-                <!--android:layout_centerVertical="true"/>-->
+            <Spinner android:id="@+id/g2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"
+                android:layout_centerVertical="true"/>
 
-            <!--&lt;!&ndash; ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 4-6 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  &ndash;&gt;-->
-            <!--<Button android:id="@+id/b6"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="25dp"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:background="@drawable/six"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 4-6 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+            <Button android:id="@+id/b6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/six"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
 
-            <!--<Button android:id="@+id/b5"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginRight="25dp"-->
-                <!--android:layout_marginLeft="25dp"-->
-                <!--android:background="@drawable/five"-->
-                <!--android:layout_toLeftOf="@id/b6"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:onClick="toggle"/>-->
+            <Button android:id="@+id/b5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/five"
+                android:layout_toLeftOf="@id/b6"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
 
-            <!--<Button android:id="@+id/b4"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_toLeftOf="@id/b5"-->
-                <!--android:layout_marginRight="25dp"-->
-                <!--android:background="@drawable/four"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
-        <!--</RelativeLayout>-->
+            <Button android:id="@+id/b4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b5"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/four"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+        </RelativeLayout>
 
-        <!--&lt;!&ndash; ````````````````` group 3 `````````````````````````````````` &ndash;&gt;-->
-        <!--<RelativeLayout android:id="@+id/p3_5"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@id/p2_5">-->
+        <!-- ````````````````` group 3 `````````````````````````````````` -->
+        <RelativeLayout android:id="@+id/p3_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/p2_5">
 
-            <!--<Spinner android:id="@+id/g3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:minWidth="150dp"-->
-                <!--android:minHeight="70dp"-->
-                <!--android:textSize="70dp"-->
-                <!--android:layout_margin="25dp"-->
-                <!--android:layout_centerVertical="true"/>-->
+            <Spinner android:id="@+id/g3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"
+                android:layout_centerVertical="true"/>
 
-            <!--&lt;!&ndash; ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 7-9 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  &ndash;&gt;-->
-            <!--<Button android:id="@+id/b9"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="25dp"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:background="@drawable/nine"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 7-9 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+            <Button android:id="@+id/b9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/nine"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
 
-            <!--<Button android:id="@+id/b8"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginRight="25dp"-->
-                <!--android:layout_marginLeft="25dp"-->
-                <!--android:background="@drawable/eight"-->
-                <!--android:layout_toLeftOf="@id/b9"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:onClick="toggle"/>-->
+            <Button android:id="@+id/b8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/eight"
+                android:layout_toLeftOf="@id/b9"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
 
-            <!--<Button android:id="@+id/b7"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_toLeftOf="@id/b8"-->
-                <!--android:layout_marginRight="25dp"-->
-                <!--android:background="@drawable/seven"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
-        <!--</RelativeLayout>-->
+            <Button android:id="@+id/b7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b8"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/seven"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+        </RelativeLayout>
 
-        <!--&lt;!&ndash; ````````````````` group 4 `````````````````````````````````` &ndash;&gt;-->
-        <!--<RelativeLayout android:id="@+id/p4_5"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@id/p3_5">-->
+        <!-- ````````````````` group 4 `````````````````````````````````` -->
+        <RelativeLayout android:id="@+id/p4_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/p3_5">
 
-            <!--<Spinner android:id="@+id/g4"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:minWidth="150dp"-->
-                <!--android:minHeight="70dp"-->
-                <!--android:textSize="70dp"-->
-                <!--android:layout_margin="25dp"-->
-                <!--android:layout_centerVertical="true"/>-->
+            <Spinner android:id="@+id/g4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"
+                android:layout_centerVertical="true"/>
 
-            <!--&lt;!&ndash; ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 10-12 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  &ndash;&gt;-->
-            <!--<Button android:id="@+id/b12"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="25dp"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:background="@drawable/twelve"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 10-12 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+            <Button android:id="@+id/b12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/twelve"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
 
-            <!--<Button android:id="@+id/b11"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginRight="25dp"-->
-                <!--android:layout_marginLeft="25dp"-->
-                <!--android:background="@drawable/eleven"-->
-                <!--android:layout_toLeftOf="@id/b12"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:onClick="toggle"/>-->
+            <Button android:id="@+id/b11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/eleven"
+                android:layout_toLeftOf="@id/b12"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
 
-            <!--<Button android:id="@+id/b10"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_toLeftOf="@id/b11"-->
-                <!--android:layout_marginRight="25dp"-->
-                <!--android:background="@drawable/ten"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
-        <!--</RelativeLayout>-->
+            <Button android:id="@+id/b10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b11"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/ten"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+        </RelativeLayout>
 
-        <!--&lt;!&ndash; ````````````````` group 5 `````````````````````````````````` &ndash;&gt;-->
-        <!--<RelativeLayout android:id="@+id/p5_5"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@id/p4_5">-->
+        <!-- ````````````````` group 5 `````````````````````````````````` -->
+        <RelativeLayout android:id="@+id/p5_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/p4_5">
 
-            <!--<Spinner android:id="@+id/g5"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:minWidth="150dp"-->
-                <!--android:minHeight="70dp"-->
-                <!--android:textSize="70dp"-->
-                <!--android:layout_margin="25dp"-->
-                <!--android:layout_centerVertical="true"/>-->
+            <Spinner android:id="@+id/g5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"
+                android:layout_centerVertical="true"/>
 
-            <!--&lt;!&ndash; ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 13-15 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  &ndash;&gt;-->
-            <!--<Button android:id="@+id/b15"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="25dp"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:background="@drawable/fifteen"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 13-15 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+            <Button android:id="@+id/b15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/fifteen"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
 
-            <!--<Button android:id="@+id/b14"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginRight="25dp"-->
-                <!--android:layout_marginLeft="25dp"-->
-                <!--android:background="@drawable/fourteen"-->
-                <!--android:layout_toLeftOf="@id/b15"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:onClick="toggle"/>-->
+            <Button android:id="@+id/b14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/fourteen"
+                android:layout_toLeftOf="@id/b15"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
 
-            <!--<Button android:id="@+id/b13"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_toLeftOf="@id/b14"-->
-                <!--android:layout_marginRight="25dp"-->
-                <!--android:background="@drawable/thirteen"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
-        <!--</RelativeLayout>-->
+            <Button android:id="@+id/b13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b14"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/thirteen"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+        </RelativeLayout>
 
-    <!--</RelativeLayout>-->
-
-
-<!-- ************************   Three Player   **************************** -->
-    <!--<RelativeLayout android:id="@+id/three_player"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:visibility="invisible">-->
-
-        <!--&lt;!&ndash; ````````````````` group 1 `````````````````````````````````` &ndash;&gt;-->
-        <!--<RelativeLayout android:id="@+id/p1_3"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="15dp">-->
-
-            <!--<Spinner android:id="@+id/g1_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:minWidth="150dp"-->
-                <!--android:minHeight="70dp"-->
-                <!--android:textSize="70dp"-->
-                <!--android:layout_margin="25dp"-->
-                <!--android:layout_centerVertical="true"/>-->
-
-            <!--&lt;!&ndash; ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 1-5 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  &ndash;&gt;-->
-            <!--<Button android:id="@+id/b5_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:background="@drawable/five"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:onClick="toggle"/>-->
-
-            <!--<Button android:id="@+id/b4_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_toLeftOf="@id/b5_3"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:background="@drawable/four"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
-
-            <!--<Button android:id="@+id/b3_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:layout_toLeftOf="@+id/b4_3"-->
-                <!--android:background="@drawable/three"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
-
-            <!--<Button android:id="@+id/b2_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:background="@drawable/two"-->
-                <!--android:layout_toLeftOf="@id/b3_3"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:onClick="toggle"/>-->
-
-            <!--<Button android:id="@+id/b1_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_toLeftOf="@id/b2_3"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:background="@drawable/one"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
-        <!--</RelativeLayout>-->
-
-        <!--&lt;!&ndash; ````````````````` group 2 `````````````````````````````````` &ndash;&gt;-->
-        <!--<RelativeLayout android:id="@+id/p2_3"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@id/p1_3"-->
-            <!--android:layout_marginBottom="15dp">-->
-
-            <!--<Spinner android:id="@+id/g2_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:minWidth="150dp"-->
-                <!--android:minHeight="70dp"-->
-                <!--android:textSize="70dp"-->
-                <!--android:layout_margin="25dp"-->
-                <!--android:layout_centerVertical="true"/>-->
-
-            <!--&lt;!&ndash; ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 6-10 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  &ndash;&gt;-->
-            <!--<Button android:id="@+id/b10_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:background="@drawable/ten"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
-
-            <!--<Button android:id="@+id/b9_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:layout_toLeftOf="@id/b10_3"-->
-                <!--android:background="@drawable/nine"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
-
-            <!--<Button android:id="@+id/b8_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:background="@drawable/eight"-->
-                <!--android:layout_toLeftOf="@id/b9_3"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:onClick="toggle"/>-->
-
-            <!--<Button android:id="@+id/b7_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_toLeftOf="@id/b8_3"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:background="@drawable/seven"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
-
-            <!--<Button android:id="@+id/b6_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:layout_toLeftOf="@+id/b7_3"-->
-                <!--android:background="@drawable/six"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
+    </RelativeLayout>
 
 
-        <!--</RelativeLayout>-->
+ <!--************************   Three Player   **************************** -->
+    <RelativeLayout android:id="@+id/three_player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
 
-        <!--&lt;!&ndash; ````````````````` group 3 `````````````````````````````````` &ndash;&gt;-->
-        <!--<RelativeLayout android:id="@+id/p3_3"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@id/p2_3"-->
-            <!--android:layout_marginBottom="15dp">-->
+        <!-- ````````````````` group 1 `````````````````````````````````` -->
+        <RelativeLayout android:id="@+id/p1_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp">
 
-            <!--<Spinner android:id="@+id/g3_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:minWidth="150dp"-->
-                <!--android:minHeight="70dp"-->
-                <!--android:textSize="70dp"-->
-                <!--android:layout_margin="25dp"-->
-                <!--android:layout_centerVertical="true"/>-->
+            <Spinner android:id="@+id/g1_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"
+                android:layout_centerVertical="true"/>
 
-            <!--&lt;!&ndash; ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 10-15 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  &ndash;&gt;-->
-            <!--<Button android:id="@+id/b15_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:background="@drawable/fifteen"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 1-5 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+            <Button android:id="@+id/b5_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/five"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
 
-            <!--<Button android:id="@+id/b14_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:background="@drawable/fourteen"-->
-                <!--android:layout_toLeftOf="@id/b15_3"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:onClick="toggle"/>-->
+            <Button android:id="@+id/b4_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b5_3"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/four"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
 
-            <!--<Button android:id="@+id/b13_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_toLeftOf="@id/b14_3"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:background="@drawable/thirteen"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
+            <Button android:id="@+id/b3_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/b4_3"
+                android:background="@drawable/three"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
 
-            <!--<Button android:id="@+id/b12_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:layout_toLeftOf="@+id/b13_3"-->
-                <!--android:background="@drawable/twelve"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:onClick="toggle"/>-->
+            <Button android:id="@+id/b2_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/two"
+                android:layout_toLeftOf="@id/b3_3"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
 
-            <!--<Button android:id="@+id/b11_3"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:background="@drawable/eleven"-->
-                <!--android:layout_toLeftOf="@id/b12_3"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:onClick="toggle"/>-->
-        <!--</RelativeLayout>-->
+            <Button android:id="@+id/b1_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b2_3"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/one"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+        </RelativeLayout>
 
-    <!--</RelativeLayout>-->
+        <!-- ````````````````` group 2 `````````````````````````````````` -->
+        <RelativeLayout android:id="@+id/p2_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/p1_3"
+            android:layout_marginBottom="15dp">
+
+            <Spinner android:id="@+id/g2_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"
+                android:layout_centerVertical="true"/>
+
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 6-10 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+            <Button android:id="@+id/b10_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ten"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b9_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@id/b10_3"
+                android:background="@drawable/nine"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b8_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/eight"
+                android:layout_toLeftOf="@id/b9_3"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b7_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b8_3"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/seven"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b6_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/b7_3"
+                android:background="@drawable/six"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+
+        </RelativeLayout>
+
+        <!-- ````````````````` group 3 `````````````````````````````````` -->
+        <RelativeLayout android:id="@+id/p3_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/p2_3"
+            android:layout_marginBottom="15dp">
+
+            <Spinner android:id="@+id/g3_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"
+                android:layout_centerVertical="true"/>
+
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 10-15 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+            <Button android:id="@+id/b15_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/fifteen"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b14_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/fourteen"
+                android:layout_toLeftOf="@id/b15_3"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b13_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/b14_3"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/thirteen"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b12_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/b13_3"
+                android:background="@drawable/twelve"
+                android:layout_centerVertical="true"
+                android:onClick="toggle"/>
+
+            <Button android:id="@+id/b11_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/eleven"
+                android:layout_toLeftOf="@id/b12_3"
+                android:layout_centerInParent="true"
+                android:onClick="toggle"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
 
     <!-- ***************************** Player Ordering  ************************************ -->
     <!-- Dummy item to prevent player input from receiving focus -->
@@ -452,56 +452,56 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
-        <!--<LinearLayout-->
-            <!--android:layout_weight="4"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content">-->
+        <LinearLayout
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
 
-            <!--<Spinner android:id="@+id/player1"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:minWidth="100dp"-->
-                <!--android:minHeight="70dp"-->
-                <!--android:textSize="70dp"-->
-                <!--android:layout_margin="25dp"/>-->
+            <Spinner android:id="@+id/player1"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minWidth="100dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"/>
 
-            <!--<Spinner android:id="@+id/player2"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:minWidth="100dp"-->
-                <!--android:minHeight="70dp"-->
-                <!--android:textSize="70dp"-->
-                <!--android:layout_margin="25dp"/>-->
+            <Spinner android:id="@+id/player2"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minWidth="100dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"/>
 
-            <!--<Spinner android:id="@+id/player3"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:minWidth="100dp"-->
-                <!--android:minHeight="70dp"-->
-                <!--android:textSize="70dp"-->
-                <!--android:layout_margin="25dp"/>-->
+            <Spinner android:id="@+id/player3"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minWidth="100dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"/>
 
-            <!--<Spinner android:id="@+id/player4"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:minWidth="100dp"-->
-                <!--android:minHeight="70dp"-->
-                <!--android:textSize="70dp"-->
-                <!--android:layout_margin="25dp"/>-->
+            <Spinner android:id="@+id/player4"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minWidth="100dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"/>
 
-            <!--<Spinner android:id="@+id/player5"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:minWidth="100dp"-->
-                <!--android:minHeight="70dp"-->
-                <!--android:textSize="70dp"-->
-                <!--android:layout_margin="25dp"/>-->
-        <!--</LinearLayout>-->
+            <Spinner android:id="@+id/player5"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minWidth="100dp"
+                android:minHeight="70dp"
+                android:textSize="70dp"
+                android:layout_margin="25dp"/>
+        </LinearLayout>
 
         <!-- Buttons -->
         <RelativeLayout
