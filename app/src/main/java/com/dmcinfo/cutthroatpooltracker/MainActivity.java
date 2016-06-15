@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
         ThreePlayers.setVisibility(View.INVISIBLE);
         FivePlayers.setVisibility(View.VISIBLE);
 
-        this.PoolBalls = PoolBall.InitPoolBalls();
+        this.PoolBalls = PoolBall.InitPoolBalls(this, this);
         this.add_players();
     }
 
@@ -99,70 +99,72 @@ public class MainActivity extends Activity {
     //     ***************************               Toggle Ball images      *************************
     public void toggle (View ball)
     {
-        String BallID;
-        BallID = ball.getResources().getResourceName(ball.getId()).split("/")[1];
-        switch (BallID) {
-            case "b1":
-            case "b1_3":
-                ToggleBall(ball, 1, R.drawable.one, R.drawable.one_out);
-                break;
-            case "b2":
-            case "b2_3":
-                ToggleBall(ball, 2, R.drawable.two, R.drawable.two_out);
-                break;
-            case "b3":
-            case "b3_3":
-                ToggleBall(ball, 3, R.drawable.three, R.drawable.three_out);
-                break;
-            case "b4_3":
-            case "b4":
-                ToggleBall(ball, 4, R.drawable.four, R.drawable.four_out);
-                break;
-            case "b5_3":
-            case "b5":
-                ToggleBall(ball, 5, R.drawable.five, R.drawable.five_out);
-                break;
-            case "b6_3":
-            case "b6":
-                ToggleBall(ball, 6, R.drawable.six, R.drawable.six_out);
-                break;
-            case "b7_3":
-            case "b7":
-                ToggleBall(ball, 7, R.drawable.seven, R.drawable.seven_out);
-                break;
-            case "b8_3":
-            case "b8":
-                ToggleBall(ball, 8, R.drawable.eight, R.drawable.eight_out);
-                break;
-            case "b9_3":
-            case "b9":
-                ToggleBall(ball, 9, R.drawable.nine, R.drawable.nine_out);
-                break;
-            case "b10_3":
-            case "b10":
-                ToggleBall(ball, 10, R.drawable.ten, R.drawable.ten_out);
-                break;
-            case "b11_3":
-            case "b11":
-                ToggleBall(ball, 11, R.drawable.eleven, R.drawable.eleven_out);
-                break;
-            case "b12_3":
-            case "b12":
-                ToggleBall(ball, 12, R.drawable.twelve, R.drawable.twelve_out);
-                break;
-            case "b13_3":
-            case "b13":
-                ToggleBall(ball, 13, R.drawable.thirteen, R.drawable.thirteen_out);
-                break;
-            case "b14_3":
-            case "b14":
-                ToggleBall(ball, 14, R.drawable.fourteen, R.drawable.fourteen_out);
-                break;
-            case "b15_3":
-            case "b15":
-                ToggleBall(ball, 15, R.drawable.fifteen, R.drawable.fifteen_out);
-                break;
-        }
+        Integer ball_number = PoolBall.FindBall(ball);
+        PoolBall.ToggleBall(this.PoolBalls.get(ball_number));
+//        String BallID;
+//        BallID = ball.getResources().getResourceName(ball.getId()).split("/")[1];
+//        switch (BallID) {
+//            case "b1":
+//            case "b1_3":
+//                ToggleBall(ball, 1, R.drawable.one, R.drawable.one_out);
+//                break;
+//            case "b2":
+//            case "b2_3":
+//                ToggleBall(ball, 2, R.drawable.two, R.drawable.two_out);
+//                break;
+//            case "b3":
+//            case "b3_3":
+//                ToggleBall(ball, 3, R.drawable.three, R.drawable.three_out);
+//                break;
+//            case "b4_3":
+//            case "b4":
+//                ToggleBall(ball, 4, R.drawable.four, R.drawable.four_out);
+//                break;
+//            case "b5_3":
+//            case "b5":
+//                ToggleBall(ball, 5, R.drawable.five, R.drawable.five_out);
+//                break;
+//            case "b6_3":
+//            case "b6":
+//                ToggleBall(ball, 6, R.drawable.six, R.drawable.six_out);
+//                break;
+//            case "b7_3":
+//            case "b7":
+//                ToggleBall(ball, 7, R.drawable.seven, R.drawable.seven_out);
+//                break;
+//            case "b8_3":
+//            case "b8":
+//                ToggleBall(ball, 8, R.drawable.eight, R.drawable.eight_out);
+//                break;
+//            case "b9_3":
+//            case "b9":
+//                ToggleBall(ball, 9, R.drawable.nine, R.drawable.nine_out);
+//                break;
+//            case "b10_3":
+//            case "b10":
+//                ToggleBall(ball, 10, R.drawable.ten, R.drawable.ten_out);
+//                break;
+//            case "b11_3":
+//            case "b11":
+//                ToggleBall(ball, 11, R.drawable.eleven, R.drawable.eleven_out);
+//                break;
+//            case "b12_3":
+//            case "b12":
+//                ToggleBall(ball, 12, R.drawable.twelve, R.drawable.twelve_out);
+//                break;
+//            case "b13_3":
+//            case "b13":
+//                ToggleBall(ball, 13, R.drawable.thirteen, R.drawable.thirteen_out);
+//                break;
+//            case "b14_3":
+//            case "b14":
+//                ToggleBall(ball, 14, R.drawable.fourteen, R.drawable.fourteen_out);
+//                break;
+//            case "b15_3":
+//            case "b15":
+//                ToggleBall(ball, 15, R.drawable.fifteen, R.drawable.fifteen_out);
+//                break;
+//        }
 
         this.IsGameOver();
     }

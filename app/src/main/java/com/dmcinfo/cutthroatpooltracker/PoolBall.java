@@ -1,15 +1,20 @@
 package com.dmcinfo.cutthroatpooltracker;
 
-import android.support.v4.util.Pools;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
 import android.widget.TextView;
 
-import java.util.HashMap;
+import com.dmcinfo.cutthroatpooltracker.R;
+
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.TreeMap;
 
 /**
  * Created by tylerb on 6/14/2016.
  */
-public class PoolBall extends MainActivity
+public class PoolBall extends Activity
 {
 
     TextView ThreePlayBalls;
@@ -17,6 +22,9 @@ public class PoolBall extends MainActivity
     Boolean IsInPlay;
     Integer InPlayImage;
     Integer PocketedImage;
+
+    private static Context app_context;
+    private static Activity app_activity;
 
     private static String five_player_ball_ids[] = {
             "b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8",
@@ -61,18 +69,16 @@ public class PoolBall extends MainActivity
 
     private TextView GetThreePlayerBallRefs(String ball)
     {
-        int id = getResources().getIdentifier(ball,
-                "id",
-                getPackageName());
-        return (TextView) findViewById(id);
+        int id = app_context.getResources().getIdentifier(ball, "id", app_context.getPackageName());
+        return (TextView) this.app_activity.findViewById(id);
     }
 
     private TextView GetFivePlayerBallRefs(String ball)
     {
-        int id = getResources().getIdentifier(ball,
+        int id = app_context.getResources().getIdentifier(ball,
                 "id",
-                getPackageName());
-        return (TextView) findViewById(id);
+                app_context.getPackageName());
+        return (TextView) app_activity.findViewById(id);
     }
 
     public PoolBall(int ball_number)
@@ -86,8 +92,10 @@ public class PoolBall extends MainActivity
         PocketedImage = pocketed_images[ball_number];
     }
 
-    public static TreeMap InitPoolBalls()
+    public static TreeMap InitPoolBalls(Context context, Activity activity)
     {
+        app_context = context;
+        app_activity = activity;
         TreeMap PoolBalls = new TreeMap();
         // initialize all the pool balls
         for(int i=1; i<=15; i++)
@@ -96,6 +104,35 @@ public class PoolBall extends MainActivity
         }
 
         return PoolBalls;
+    }
+
+    public static Integer FindBall(View ball)
+    {
+        Boolean found;
+        String ballID = ball.getResources().getResourceName(ball.getId()).split("/")[1];
+        found = Arrays.asList(five_player_ball_ids).contains(ballID);
+        found |= Arrays.asList(three_player_ball_ids).contains(ballID);
+        if (found)
+        {
+            // return the index of the found ball PLUS 1
+            return 1;
+        }
+        return 0;
+    }
+
+    public static void ToggleBall(Class )
+    {
+        if (ball.isInPlay){
+            ball.setBackgroundResource(normalImage);
+            ball.setActivated(false);
+            ballsInPlay.add(number);
+        }
+        else
+        {
+            ball.setBackgroundResource(outImage);
+            ball.setActivated(true);
+            ballsInPlay.remove(ballsInPlay.indexOf(number));
+        }
     }
 
 }
