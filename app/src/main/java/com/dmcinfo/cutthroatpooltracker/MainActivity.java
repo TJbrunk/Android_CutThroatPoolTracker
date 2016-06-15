@@ -25,13 +25,10 @@ import java.util.ArrayList;
 public class MainActivity extends Activity {
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-    private static final String TAG = MainActivity.class.getSimpleName();
     private Spinner player1, player2, player3, player4, player5;
     private Spinner group1, group2, group3, group4, group5, group1_3, group2_3, group3_3;
     private ArrayList players, groups, ballsInPlay;
     private PlayerDB playerDB;
-    public CharSequence dragData;
-    private int pktoload = 1;
 
     View FivePlayers, ThreePlayers;
     TextView PlayersButton;
@@ -42,7 +39,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Initialize the balls in play list
-//        ResetBallsInPlay();
+        ResetBallsInPlay();
         setContentView(R.layout.activity_main);
 
         //views to drag
@@ -163,7 +160,7 @@ public class MainActivity extends Activity {
                 break;
         }
 
-        //this.IsGameOver();
+        this.IsGameOver();
     }
 
     private void ToggleBall(View ball, int number, int normalImage, int outImage)
@@ -171,13 +168,13 @@ public class MainActivity extends Activity {
         if (ball.isActivated()){
             ball.setBackgroundResource(normalImage);
             ball.setActivated(false);
-           // ballsInPlay.add(number);
+            ballsInPlay.add(number);
         }
         else
         {
             ball.setBackgroundResource(outImage);
             ball.setActivated(true);
-            //ballsInPlay.remove(ballsInPlay.indexOf(number));
+            ballsInPlay.remove(ballsInPlay.indexOf(number));
         }
     }
 
@@ -293,17 +290,18 @@ public class MainActivity extends Activity {
 
     public void add_players (){
         playerDB = new PlayerDB(this);
-        playerDB.addPlayer("Guest1", "-");
-        playerDB.addPlayer("Guest2", "-");
-        playerDB.addPlayer("Nick", "Aroneseno");
+
         playerDB.addPlayer("Tyler", "Brink");
-        playerDB.addPlayer("Otto", "Gottlieb");
+        playerDB.addPlayer("Tim", "Gee");
         playerDB.addPlayer("Jimmy", "Condon");
+        playerDB.addPlayer("Ryan", "Lake");
+        playerDB.addPlayer("Nick", "Aroneseno");
+        playerDB.addPlayer("Devon", "Fritz");
+        playerDB.addPlayer("Otto", "Gottlieb");
         playerDB.addPlayer("Sully", "John");
         playerDB.addPlayer("Boris", "Cherkasskiy");
-        playerDB.addPlayer("Devon", "Fritz");
-        playerDB.addPlayer("Tim", "Gee");
-        playerDB.addPlayer("Ryan", "Lake");
+        playerDB.addPlayer("Guest1", "-");
+        playerDB.addPlayer("Guest2", "-");
 
         load_players();
     }
