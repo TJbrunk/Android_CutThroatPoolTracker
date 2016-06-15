@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class MainActivity extends Activity {
 
@@ -29,14 +30,14 @@ public class MainActivity extends Activity {
     private Spinner group1, group2, group3, group4, group5, group1_3, group2_3, group3_3;
     private ArrayList players, groups, ballsInPlay;
     private PlayerDB playerDB;
+    private TreeMap PoolBalls;
 
     View FivePlayers, ThreePlayers;
     TextView PlayersButton;
 
-
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         // Initialize the balls in play list
         ResetBallsInPlay();
@@ -64,11 +65,13 @@ public class MainActivity extends Activity {
         ThreePlayers.setVisibility(View.INVISIBLE);
         FivePlayers.setVisibility(View.VISIBLE);
 
+        this.PoolBalls = PoolBall.InitPoolBalls();
         this.add_players();
     }
 
 /* ----------------------------- 3 & 5 Player View switching ----------------------------------*/
-    public void switch_views (View v){
+    public void switch_views (View v)
+    {
         FivePlayers = findViewById(R.id.five_player);
         ThreePlayers = findViewById(R.id.three_player);
         PlayersButton = (TextView) findViewById(R.id.player_button);
@@ -94,7 +97,8 @@ public class MainActivity extends Activity {
     }
 
     //     ***************************               Toggle Ball images      *************************
-    public void toggle (View ball){
+    public void toggle (View ball)
+    {
         String BallID;
         BallID = ball.getResources().getResourceName(ball.getId()).split("/")[1];
         switch (BallID) {
@@ -278,7 +282,8 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void reset_pool (View v){
+    public void reset_pool (View v)
+    {
         player1.setSelection(0);
         player2.setSelection(0);
         player3.setSelection(0);
@@ -288,7 +293,8 @@ public class MainActivity extends Activity {
         recreate();
    }
 
-    public void add_players (){
+    public void add_players ()
+    {
         playerDB = new PlayerDB(this);
 
         playerDB.addPlayer("Tyler", "Brink");
@@ -306,7 +312,8 @@ public class MainActivity extends Activity {
         load_players();
     }
 
-    private void load_players (){
+    private void load_players ()
+    {
         int i = 1;
         this.players = new ArrayList();
         this.players.clear();
@@ -424,7 +431,6 @@ public class MainActivity extends Activity {
             ballsInPlay.add(i);
         }
     }
-
 
     public void UpdateBallsInPlay(View v)
     {
