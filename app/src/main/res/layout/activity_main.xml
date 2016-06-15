@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.dmcinfo.cutthroatpooltracker.MainActivity"
-    android:background="#000000">
+    android:background="#212121">
 
     <!-- *****************   Five Player  *********************** -->
     <RelativeLayout android:id="@+id/five_player"
@@ -22,17 +22,11 @@
             android:layout_height="wrap_content">
 
             <Spinner android:id="@+id/g1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="150dp"
-                android:minHeight="70dp"
-                android:textSize="70dp"
-                android:layout_margin="25dp"
-                android:layout_centerVertical="true"/>
+                style="@style/PlayerSelection" />
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 1-3 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b3"
-                android:layout_width="wrap_content"
+                style="@style/BallDisplay"
                 android:minWidth="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -70,13 +64,7 @@
             android:layout_below="@id/p1_5">
 
             <Spinner android:id="@+id/g2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="150dp"
-                android:minHeight="70dp"
-                android:textSize="70dp"
-                android:layout_margin="25dp"
-                android:layout_centerVertical="true"/>
+                style="@style/PlayerSelection"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 4-6 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b6"
@@ -115,13 +103,7 @@
             android:layout_below="@id/p2_5">
 
             <Spinner android:id="@+id/g3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="150dp"
-                android:minHeight="70dp"
-                android:textSize="70dp"
-                android:layout_margin="25dp"
-                android:layout_centerVertical="true"/>
+                style="@style/PlayerSelection"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 7-9 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b9"
@@ -160,13 +142,7 @@
             android:layout_below="@id/p3_5">
 
             <Spinner android:id="@+id/g4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="150dp"
-                android:minHeight="70dp"
-                android:textSize="70dp"
-                android:layout_margin="25dp"
-                android:layout_centerVertical="true"/>
+                style="@style/PlayerSelection"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 10-12 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b12"
@@ -205,13 +181,7 @@
             android:layout_below="@id/p4_5">
 
             <Spinner android:id="@+id/g5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="150dp"
-                android:minHeight="70dp"
-                android:textSize="70dp"
-                android:layout_margin="25dp"
-                android:layout_centerVertical="true"/>
+                style="@style/PlayerSelection"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 13-15 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b15"
@@ -259,13 +229,7 @@
             android:layout_marginBottom="15dp">
 
             <Spinner android:id="@+id/g1_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="150dp"
-                android:minHeight="70dp"
-                android:textSize="70dp"
-                android:layout_margin="25dp"
-                android:layout_centerVertical="true"/>
+                style="@style/PlayerSelection"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 1-5 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b5_3"
@@ -322,13 +286,7 @@
             android:layout_marginBottom="15dp">
 
             <Spinner android:id="@+id/g2_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="150dp"
-                android:minHeight="70dp"
-                android:textSize="70dp"
-                android:layout_margin="25dp"
-                android:layout_centerVertical="true"/>
+                style="@style/PlayerSelection"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 6-10 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b10_3"
@@ -386,13 +344,7 @@
             android:layout_marginBottom="15dp">
 
             <Spinner android:id="@+id/g3_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="150dp"
-                android:minHeight="70dp"
-                android:textSize="70dp"
-                android:layout_margin="25dp"
-                android:layout_centerVertical="true"/>
+                style="@style/PlayerSelection"/>
 
             <!-- ^^^^^^^^^^^^^^^^^^^^^^^^ Pool Ball images 10-15 ^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
             <Button android:id="@+id/b15_3"
@@ -466,49 +418,19 @@
             android:layout_height="wrap_content">
 
             <Spinner android:id="@+id/player1"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:minWidth="100dp"
-                android:minHeight="70dp"
-                android:textSize="70dp"
-                android:layout_margin="25dp"/>
+                style="@style/Players"/>
 
             <Spinner android:id="@+id/player2"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:minWidth="100dp"
-                android:minHeight="70dp"
-                android:textSize="70dp"
-                android:layout_margin="25dp"/>
+                style="@style/Players"/>
 
             <Spinner android:id="@+id/player3"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:minWidth="100dp"
-                android:minHeight="70dp"
-                android:textSize="70dp"
-                android:layout_margin="25dp"/>
+                style="@style/Players"/>
 
             <Spinner android:id="@+id/player4"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:minWidth="100dp"
-                android:minHeight="70dp"
-                android:textSize="70dp"
-                android:layout_margin="25dp"/>
+                style="@style/Players"/>
 
             <Spinner android:id="@+id/player5"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:minWidth="100dp"
-                android:minHeight="70dp"
-                android:textSize="70dp"
-                android:layout_margin="25dp"/>
+                style="@style/Players"/>
         </LinearLayout>
 
         <!-- Buttons -->
