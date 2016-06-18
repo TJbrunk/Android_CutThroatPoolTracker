@@ -5,10 +5,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-import com.dmcinfo.cutthroatpooltracker.R;
-
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.TreeMap;
 
 /**
@@ -17,7 +14,7 @@ import java.util.TreeMap;
 public class PoolBall extends Activity
 {
 
-    TextView ThreePlayBalls;
+    TextView ThreePlayerBalls;
     TextView FivePlayerBalls;
     Boolean IsInPlay;
     Integer InPlayImage;
@@ -85,7 +82,7 @@ public class PoolBall extends Activity
     {
         //decrement the ball number so API calls can be used as 1-15
         ball_number --;
-        ThreePlayBalls = GetThreePlayerBallRefs(three_player_ball_ids[ball_number]);
+        ThreePlayerBalls = GetThreePlayerBallRefs(three_player_ball_ids[ball_number]);
         FivePlayerBalls = GetFivePlayerBallRefs(five_player_ball_ids[ball_number]);
         IsInPlay = true;
         InPlayImage = in_play_images[ball_number];
@@ -108,31 +105,84 @@ public class PoolBall extends Activity
 
     public static Integer FindBall(View ball)
     {
-        Boolean found;
+        int found;
         String ballID = ball.getResources().getResourceName(ball.getId()).split("/")[1];
-        found = Arrays.asList(five_player_ball_ids).contains(ballID);
-        found |= Arrays.asList(three_player_ball_ids).contains(ballID);
-        if (found)
+        found = Arrays.asList(five_player_ball_ids).indexOf(ballID);
+        if (found >= 0)
         {
-            // return the index of the found ball PLUS 1
-            return 1;
-        }
-        return 0;
-    }
-
-    public static void ToggleBall(Class )
-    {
-        if (ball.isInPlay){
-            ball.setBackgroundResource(normalImage);
-            ball.setActivated(false);
-            ballsInPlay.add(number);
+            return  found + 1;
         }
         else
         {
-            ball.setBackgroundResource(outImage);
-            ball.setActivated(true);
-            ballsInPlay.remove(ballsInPlay.indexOf(number));
+            return Arrays.asList(three_player_ball_ids).indexOf(ballID) + 1;
         }
+    }
+
+    public static PoolBall ToggleBall(Object obj )
+    {
+        PoolBall ball = (PoolBall) obj;
+
+        if (ball.IsInPlay)
+        {
+            // if the ball was in play, set it as pocketed now
+            ball.PockectBall(ball);
+        }
+        else
+        {
+            ball.ReturnBallToPlay(ball);
+        }
+
+        return ball;
+    }
+
+    public static boolean IsBallInPlay(Object obj)
+    {
+        PoolBall ball = (PoolBall) obj;
+
+        return ball.IsInPlay;
+    }
+
+    public static PoolBall UpdateBall(Object obj, boolean isInPlay)
+    {
+        PoolBall ball = (PoolBall) obj;
+
+        ball.IsInPlay = isInPlay;
+        if(isInPlay)
+        {
+            ball = ReturnBallToPlay(ball);
+        }
+        else
+        {
+            ball = PockectBall(ball);
+        }
+        return  ball;
+
+    }
+
+    private static PoolBall PockectBall(PoolBall ball)
+    {
+        ball.ThreePlayerBalls.setBackgroundResource(ball.PocketedImage);
+        ball.FivePlayerBalls.setBackgroundResource(ball.PocketedImage);
+
+        ball.ThreePlayerBalls.setActivated(false);
+        ball.FivePlayerBalls.setActivated(false);
+
+        ball.IsInPlay = false;
+
+        return ball;
+    }
+
+    private static PoolBall ReturnBallToPlay(PoolBall ball)
+    {
+        ball.ThreePlayerBalls.setBackgroundResource(ball.InPlayImage);
+        ball.FivePlayerBalls.setBackgroundResource(ball.InPlayImage);
+
+        ball.ThreePlayerBalls.setActivated(true);
+        ball.FivePlayerBalls.setActivated(true);
+
+        ball.IsInPlay = true;
+
+        return ball;
     }
 
 }

@@ -97,91 +97,22 @@ public class MainActivity extends Activity {
     }
 
     //     ***************************               Toggle Ball images      *************************
+    // This method is linked to every ball image through the sytle sheet, and gets called
+    // when the ball is clicked
     public void toggle (View ball)
     {
-        Integer ball_number = PoolBall.FindBall(ball);
-        PoolBall.ToggleBall(this.PoolBalls.get(ball_number));
-//        String BallID;
-//        BallID = ball.getResources().getResourceName(ball.getId()).split("/")[1];
-//        switch (BallID) {
-//            case "b1":
-//            case "b1_3":
-//                ToggleBall(ball, 1, R.drawable.one, R.drawable.one_out);
-//                break;
-//            case "b2":
-//            case "b2_3":
-//                ToggleBall(ball, 2, R.drawable.two, R.drawable.two_out);
-//                break;
-//            case "b3":
-//            case "b3_3":
-//                ToggleBall(ball, 3, R.drawable.three, R.drawable.three_out);
-//                break;
-//            case "b4_3":
-//            case "b4":
-//                ToggleBall(ball, 4, R.drawable.four, R.drawable.four_out);
-//                break;
-//            case "b5_3":
-//            case "b5":
-//                ToggleBall(ball, 5, R.drawable.five, R.drawable.five_out);
-//                break;
-//            case "b6_3":
-//            case "b6":
-//                ToggleBall(ball, 6, R.drawable.six, R.drawable.six_out);
-//                break;
-//            case "b7_3":
-//            case "b7":
-//                ToggleBall(ball, 7, R.drawable.seven, R.drawable.seven_out);
-//                break;
-//            case "b8_3":
-//            case "b8":
-//                ToggleBall(ball, 8, R.drawable.eight, R.drawable.eight_out);
-//                break;
-//            case "b9_3":
-//            case "b9":
-//                ToggleBall(ball, 9, R.drawable.nine, R.drawable.nine_out);
-//                break;
-//            case "b10_3":
-//            case "b10":
-//                ToggleBall(ball, 10, R.drawable.ten, R.drawable.ten_out);
-//                break;
-//            case "b11_3":
-//            case "b11":
-//                ToggleBall(ball, 11, R.drawable.eleven, R.drawable.eleven_out);
-//                break;
-//            case "b12_3":
-//            case "b12":
-//                ToggleBall(ball, 12, R.drawable.twelve, R.drawable.twelve_out);
-//                break;
-//            case "b13_3":
-//            case "b13":
-//                ToggleBall(ball, 13, R.drawable.thirteen, R.drawable.thirteen_out);
-//                break;
-//            case "b14_3":
-//            case "b14":
-//                ToggleBall(ball, 14, R.drawable.fourteen, R.drawable.fourteen_out);
-//                break;
-//            case "b15_3":
-//            case "b15":
-//                ToggleBall(ball, 15, R.drawable.fifteen, R.drawable.fifteen_out);
-//                break;
-//        }
+        int ball_number = PoolBall.FindBall(ball);
+        PoolBalls.put(ball_number, PoolBall.ToggleBall(this.PoolBalls.get(ball_number)));
 
-        this.IsGameOver();
-    }
-
-    private void ToggleBall(View ball, int number, int normalImage, int outImage)
-    {
-        if (ball.isActivated()){
-            ball.setBackgroundResource(normalImage);
-            ball.setActivated(false);
-            ballsInPlay.add(number);
+        if (PoolBall.IsBallInPlay(PoolBalls.get(ball_number)))
+        {
+            ballsInPlay.add(ball_number);
         }
         else
         {
-            ball.setBackgroundResource(outImage);
-            ball.setActivated(true);
-            ballsInPlay.remove(ballsInPlay.indexOf(number));
+            ballsInPlay.remove(ball_number);
         }
+        this.IsGameOver();
     }
 
     private void IsGameOver()
@@ -434,6 +365,7 @@ public class MainActivity extends Activity {
         }
     }
 
+    // called buy update button on GUI. Requests JSON string defining all the balls from LabVIEW app
     public void UpdateBallsInPlay(View v)
     {
         // Instantiate the RequestQueue.
@@ -466,42 +398,32 @@ public class MainActivity extends Activity {
         queue.add(stringRequest);
     }
 
+    // Called when a JSON message is received.
+    // Parses the JSON sting and updates all the balls on the GUI
     public void ReadJsonMessage(String jsonString) throws JSONException
     {
+        // static string for testing purposes:
         String jsonTest = "[{\"Ball\":1,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":1}},{\"Ball\":2,\"In Play\":true,\"Location\":{\"X\":2,\"Y\":3}},{\"Ball\":3,\"In Play\":false,\"Location\":{\"X\":4,\"Y\":5}}]";
         JSONArray jsonArray = new JSONArray(jsonTest);
+
+        // LV is providing an array of objects. Cast the string to an array
+        //JSONArray jsonArray = new JSONArray(jsonString);
         Integer iBall;
-        String sBall;
         Boolean InPlay;
         /*Integer LocationX = null;
         Integer LocationY = null;*/
 
-        String BallIDs[] = {"b1", "b2", "b3"};
-        Integer NormalImages[] = {R.drawable.one, R.drawable.two, R.drawable.three};
-        Integer OutImages[] = { R.drawable.one_out, R.drawable.two_out, R.drawable.three_out };
 
-
+        // loop over all 15 balls defined in the JSON array
         for (int j = 0; j< jsonArray.length() ; j++)
         {
+            // get the next ball
             JSONObject jsonObject =  jsonArray.getJSONObject(j);
+            // get the ball number
             iBall = jsonObject.getInt("Ball");
-            sBall = iBall.toString();
+            // get if the ball is active or not
             InPlay = jsonObject.getBoolean("In Play");
-
-            int resId = getResources().getIdentifier(BallIDs[j], "id", getPackageName());
-            TextView ballID = (TextView) findViewById(resId);
-
-            if(InPlay)
-            {
-                ballID.setActivated(true);
-                //Toast.makeText(getApplicationContext(), "Ball "+ sBall +" is in play", Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
-                ballID.setActivated(false);
-                //Toast.makeText(getApplicationContext(), "Ball "+ sBall +" is pocketed", Toast.LENGTH_SHORT).show();
-            }
-            ToggleBall(ballID, 0, NormalImages[j], OutImages[j]);
+            PoolBall.UpdateBall(this.PoolBalls.get(iBall), InPlay);
         }
     }
 }
