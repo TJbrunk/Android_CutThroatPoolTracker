@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.TreeMap;
 
 public class MainActivity extends Activity {
@@ -97,22 +98,22 @@ public class MainActivity extends Activity {
     }
 
     //     ***************************               Toggle Ball images      *************************
-    // This method is linked to every ball image through the sytle sheet, and gets called
+    // This method is linked to every ball image through the style sheet, and gets called
     // when the ball is clicked
     public void toggle (View ball)
     {
         int ball_number = PoolBall.FindBall(ball);
         PoolBalls.put(ball_number, PoolBall.ToggleBall(this.PoolBalls.get(ball_number)));
 
-        if (PoolBall.IsBallInPlay(PoolBalls.get(ball_number)))
-        {
-            ballsInPlay.add(ball_number);
-        }
-        else
-        {
-            ballsInPlay.remove(ball_number);
-        }
-        this.IsGameOver();
+//        if (PoolBall.IsBallInPlay(PoolBalls.get(ball_number)))
+//        {
+//            ballsInPlay.add(ball_number);
+//        }
+//        else
+//        {
+//            ballsInPlay.remove(ball_number);
+//        }
+        //this.IsGameOver();
     }
 
     private void IsGameOver()
@@ -230,17 +231,19 @@ public class MainActivity extends Activity {
     {
         playerDB = new PlayerDB(this);
 
-        playerDB.addPlayer("Tyler", "Brink");
-        playerDB.addPlayer("Tim", "Gee");
-        playerDB.addPlayer("Jimmy", "Condon");
-        playerDB.addPlayer("Ryan", "Lake");
-        playerDB.addPlayer("Nick", "Aroneseno");
-        playerDB.addPlayer("Devon", "Fritz");
-        playerDB.addPlayer("Otto", "Gottlieb");
-        playerDB.addPlayer("Sully", "John");
         playerDB.addPlayer("Boris", "Cherkasskiy");
-        playerDB.addPlayer("Guest1", "-");
-        playerDB.addPlayer("Guest2", "-");
+        playerDB.addPlayer("Devon", "Fritz");
+        playerDB.addPlayer("Jimmy", "Condon");
+        playerDB.addPlayer("Nick", "Aroneseno");
+        playerDB.addPlayer("Otto", "Gottlieb");
+        playerDB.addPlayer("Ryan", "Lake");
+        playerDB.addPlayer("Sully", "John");
+        playerDB.addPlayer("Tim", "Gee");
+        playerDB.addPlayer("Tyler", "Brink");
+
+//        playerDB.addPlayer("Guest1", "-");
+//        playerDB.addPlayer("Guest2", "-");
+//        playerDB.addPlayer("Guest3", "-");
 
         load_players();
     }
@@ -250,11 +253,16 @@ public class MainActivity extends Activity {
         int i = 1;
         this.players = new ArrayList();
         this.players.clear();
-        //this.players.add(""); // Add black player so that none can be selected
+        this.players.add(""); // Add black player so that none can be selected
         while (this.playerDB.getPlayer(i) != "none") {
             this.players.add(this.playerDB.getPlayer(i));
             i += 1;
         }
+        Collections.sort(players);
+        this.players.add("Guest 1");
+        this.players.add("Guest 2");
+        this.players.add("Guest 3");
+
         ArrayAdapter adapter = new ArrayAdapter(this, com.dmcinfo.cutthroatpooltracker.R.layout.player_dropdown_item, this.players);
         player1.setAdapter(adapter);
         player2.setAdapter(adapter);
@@ -370,7 +378,8 @@ public class MainActivity extends Activity {
     {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://jsonplaceholder.typicode.com/posts";
+        //String url ="http://jsonplaceholder.typicode.com/posts";
+        final String url = "http://192.168.12.77:8001/PoolBallStatus";
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -391,7 +400,7 @@ public class MainActivity extends Activity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Unable to contact camera", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Unable to contact " + url, Toast.LENGTH_LONG).show();
                     }
                 });
         // Add the request to the RequestQueue.
@@ -403,11 +412,11 @@ public class MainActivity extends Activity {
     public void ReadJsonMessage(String jsonString) throws JSONException
     {
         // static string for testing purposes:
-        String jsonTest = "[{\"Ball\":1,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":1}},{\"Ball\":2,\"In Play\":true,\"Location\":{\"X\":2,\"Y\":3}},{\"Ball\":3,\"In Play\":false,\"Location\":{\"X\":4,\"Y\":5}}]";
-        JSONArray jsonArray = new JSONArray(jsonTest);
+        //String jsonTest = "[{\"Ball\":1,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}},{\"Ball\":2,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}},{\"Ball\":3,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}},{\"Ball\":4,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}},{\"Ball\":5,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}},{\"Ball\":6,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}},{\"Ball\":7,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}},{\"Ball\":8,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}},{\"Ball\":9,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}},{\"Ball\":10,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}},{\"Ball\":11,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}},{\"Ball\":12,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}},{\"Ball\":13,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}},{\"Ball\":14,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}},{\"Ball\":15,\"In Play\":true,\"Location\":{\"X\":0,\"Y\":0}}]";
+        //JSONArray jsonArray = new JSONArray(jsonTest);
 
         // LV is providing an array of objects. Cast the string to an array
-        //JSONArray jsonArray = new JSONArray(jsonString);
+        JSONArray jsonArray = new JSONArray(jsonString);
         Integer iBall;
         Boolean InPlay;
         /*Integer LocationX = null;
