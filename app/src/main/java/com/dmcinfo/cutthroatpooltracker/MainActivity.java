@@ -240,6 +240,7 @@ public class MainActivity extends Activity {
         playerDB.addPlayer("Sully", "John");
         playerDB.addPlayer("Tim", "Gee");
         playerDB.addPlayer("Tyler", "Brink");
+        playerDB.addPlayer("Cameron", "Fyfe");
 
 //        playerDB.addPlayer("Guest1", "-");
 //        playerDB.addPlayer("Guest2", "-");
